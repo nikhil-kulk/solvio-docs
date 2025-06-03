@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Observability on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/observability/</link><description>Recent content in Observability on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/observability/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenLLMetry</title><link>https://qdrant.tech/documentation/observability/openllmetry/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/observability/openllmetry/</guid><description>&lt;h1 id="openllmetry">OpenLLMetry&lt;/h1>
+&lt;p>OpenLLMetry from &lt;a href="https://www.traceloop.com/" target="_blank" rel="noopener nofollow">Traceloop&lt;/a> is a set of extensions built on top of &lt;a href="https://opentelemetry.io/" target="_blank" rel="noopener nofollow">OpenTelemetry&lt;/a> that gives you complete observability over your LLM application.&lt;/p>
+&lt;p>OpenLLMetry supports instrumenting the &lt;code>qdrant_client&lt;/code> Python library and exporting the traces to various observability platforms, as described in their &lt;a href="https://www.traceloop.com/docs/openllmetry/integrations/introduction#the-integrations-catalog" target="_blank" rel="noopener nofollow">Integrations catalog&lt;/a>.&lt;/p>
+&lt;p>This page assumes you&amp;rsquo;re using &lt;code>qdrant-client&lt;/code> version 1.7.3 or above.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>To set up OpenLLMetry, follow these steps:&lt;/p>
+&lt;ol>
+&lt;li>Install the SDK:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-console" data-lang="console">&lt;span class="line">&lt;span class="cl">&lt;span class="go">pip install traceloop-sdk
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol>
+&lt;li>Instantiate the SDK:&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">traceloop.sdk&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">Traceloop&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">Traceloop&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">init&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>You&amp;rsquo;re now tracing your &lt;code>qdrant_client&lt;/code> usage with OpenLLMetry!&lt;/p></description></item><item><title>OpenLIT</title><link>https://qdrant.tech/documentation/observability/openlit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/observability/openlit/</guid><description>&lt;h1 id="openlit">OpenLIT&lt;/h1>
+&lt;p>&lt;a href="https://github.com/openlit/openlit" target="_blank" rel="noopener nofollow">OpenLIT&lt;/a> is an OpenTelemetry-native LLM Application Observability tool and includes OpenTelemetry auto-instrumentation to monitor Qdrant and provide insights to improve database operations and application performance.&lt;/p>
+&lt;p>This page assumes you&amp;rsquo;re using &lt;code>qdrant-client&lt;/code> version 1.7.3 or above.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;h3 id="step-1-install-openlit">Step 1: Install OpenLIT&lt;/h3>
+&lt;p>Open your command line or terminal and run:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install openlit
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="step-2-initialize-openlit-in-your-application">Step 2: Initialize OpenLIT in your Application&lt;/h3>
+&lt;p>Integrating OpenLIT into LLM applications is straightforward with just &lt;strong>two lines of code&lt;/strong>:&lt;/p></description></item><item><title>Datadog</title><link>https://qdrant.tech/documentation/observability/datadog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/observability/datadog/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/observability/datadog/datadog-cover.jpg" alt="Datadog Cover">&lt;/p>
+&lt;p>&lt;a href="https://www.datadoghq.com/" target="_blank" rel="noopener nofollow">Datadog&lt;/a> is a cloud-based monitoring and analytics platform that offers real-time monitoring of servers, databases, and numerous other tools and services. It provides visibility into the performance of applications and enables businesses to detect issues before they affect users.&lt;/p>
+&lt;p>You can install the &lt;a href="https://docs.datadoghq.com/integrations/qdrant/" target="_blank" rel="noopener nofollow">Qdrant integration&lt;/a> to get real-time metrics to monitor your Qdrant deployment within Datadog including:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>The performance of REST and gRPC interfaces with metrics such as total requests, total failures, and time to serve to identify potential bottlenecks and mitigate them.&lt;/p></description></item></channel></rss>

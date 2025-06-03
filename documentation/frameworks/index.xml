@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Frameworks on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/frameworks/</link><description>Recent content in Frameworks on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/frameworks/index.xml" rel="self" type="application/rss+xml"/><item><title>Autogen</title><link>https://qdrant.tech/documentation/frameworks/autogen/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/autogen/</guid><description>&lt;h1 id="microsoft-autogen">Microsoft Autogen&lt;/h1>
+&lt;p>&lt;a href="https://github.com/microsoft/autogen/tree/0.2" target="_blank" rel="noopener nofollow">AutoGen&lt;/a> is an open-source programming framework for building AI agents and facilitating cooperation among multiple agents to solve tasks.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Multi-agent conversations: AutoGen agents can communicate with each other to solve tasks. This allows for more complex and sophisticated applications than would be possible with a single LLM.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Customization: AutoGen agents can be customized to meet the specific needs of an application. This includes the ability to choose the LLMs to use, the types of human input to allow, and the tools to employ.&lt;/p></description></item><item><title>AWS Lakechain</title><link>https://qdrant.tech/documentation/frameworks/lakechain/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/lakechain/</guid><description>&lt;h1 id="aws-lakechain">AWS Lakechain&lt;/h1>
+&lt;p>&lt;a href="https://awslabs.github.io/project-lakechain/" target="_blank" rel="noopener nofollow">Project Lakechain&lt;/a> is a framework based on the AWS Cloud Development Kit (CDK), allowing to express and deploy scalable document processing pipelines on AWS using infrastructure-as-code. It emphasizes on modularity and extensibility of pipelines, and provides 60+ ready to use components for prototyping complex processing pipelines that scale out of the box to millions of documents.&lt;/p>
+&lt;p>The Qdrant storage connector available with Lakechain enables uploading vector embeddings produced by other middlewares to a Qdrant collection.&lt;/p></description></item><item><title>CamelAI</title><link>https://qdrant.tech/documentation/frameworks/camel/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/camel/</guid><description>&lt;h1 id="camel">Camel&lt;/h1>
+&lt;p>&lt;a href="https://www.camel-ai.org" target="_blank" rel="noopener nofollow">Camel&lt;/a> is a Python framework to build and use LLM-based agents for real-world task solving.&lt;/p>
+&lt;p>Qdrant is available as a storage mechanism in Camel for ingesting and retrieving semantically similar data.&lt;/p>
+&lt;h2 id="usage-with-qdrant">Usage With Qdrant&lt;/h2>
+&lt;ul>
+&lt;li>Install Camel with the &lt;code>vector-databases&lt;/code> extra.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install &lt;span class="s2">&amp;#34;camel[vector-databases]&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Configure the &lt;code>QdrantStorage&lt;/code> class.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">camel.storages&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">QdrantStorage&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">VectorDBQuery&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">VectorRecord&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">camel.types&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">VectorDistance&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">qdrant_storage&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">QdrantStorage&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">url_and_api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;https://xyz-example.eu-central.aws.cloud.qdrant.io:6333&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;&amp;lt;provide-your-own-key&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">collection_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="si">{collection_name}&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">distance&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">VectorDistance&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">COSINE&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">vector_dim&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">384&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>QdrantStorage&lt;/code> class implements methods to read and write to a Qdrant instance. An instance of this class can now be passed to retrievers for interfacing with your Qdrant collections.&lt;/p></description></item><item><title>Cheshire Cat</title><link>https://qdrant.tech/documentation/frameworks/cheshire-cat/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/cheshire-cat/</guid><description>&lt;h1 id="cheshire-cat">Cheshire Cat&lt;/h1>
+&lt;p>&lt;a href="https://cheshirecat.ai/" target="_blank" rel="noopener nofollow">Cheshire Cat&lt;/a> is an open-source framework that allows you to develop intelligent agents on top of many Large Language Models (LLM). You can develop your custom AI architecture to assist you in a wide range of tasks.&lt;/p>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/cheshire-cat/cat.jpg" alt="Cheshire cat">&lt;/p>
+&lt;h2 id="cheshire-cat-and-qdrant">Cheshire Cat and Qdrant&lt;/h2>
+&lt;p>Cheshire Cat uses Qdrant as the default &lt;a href="https://cheshire-cat-ai.github.io/docs/faq/llm-concepts/vector-memory/" target="_blank" rel="noopener nofollow">Vector Memory&lt;/a> for ingesting and retrieving documents.&lt;/p>
+&lt;pre tabindex="0">&lt;code># Decide host and port for your Cat. Default will be localhost:1865
+CORE_HOST=localhost
+CORE_PORT=1865
+
+# Qdrant server
+# QDRANT_HOST=localhost
+# QDRANT_PORT=6333
+&lt;/code>&lt;/pre>&lt;p>Cheshire Cat takes great advantage of the following features of Qdrant:&lt;/p></description></item><item><title>CrewAI</title><link>https://qdrant.tech/documentation/frameworks/crewai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/crewai/</guid><description>&lt;h1 id="crewai">CrewAI&lt;/h1>
+&lt;p>&lt;a href="https://www.crewai.com" target="_blank" rel="noopener nofollow">CrewAI&lt;/a> is a framework for orchestrating role-playing, autonomous AI agents. By leveraging collaborative intelligence, CrewAI allows agents to work together seamlessly, tackling complex tasks.&lt;/p>
+&lt;p>The framework has a sophisticated memory system designed to significantly enhance the capabilities of AI agents. This system aids agents to remember, reason, and learn from past interactions. You can use Qdrant to store short-term memory and entity memories of CrewAI agents.&lt;/p>
+&lt;ul>
+&lt;li>Short-Term Memory&lt;/li>
+&lt;/ul>
+&lt;p>Temporarily stores recent interactions and outcomes using RAG, enabling agents to recall and utilize information relevant to their current context during the current executions.&lt;/p></description></item><item><title>Dagster</title><link>https://qdrant.tech/documentation/frameworks/dagster/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/dagster/</guid><description>&lt;h1 id="dagster">Dagster&lt;/h1>
+&lt;p>&lt;a href="https://dagster.io" target="_blank" rel="noopener nofollow">Dagster&lt;/a> is a Python framework for data orchestration built for data engineers, with integrated lineage, observability, a declarative programming model, and best-in-class testability.&lt;/p>
+&lt;p>The &lt;code>dagster-qdrant&lt;/code> library lets you integrate Qdrant&amp;rsquo;s vector database with Dagster, making it easy to build AI-driven data pipelines. You can run vector searches and manage data directly within Dagster.&lt;/p>
+&lt;h3 id="installation">Installation&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install dagster dagster-qdrant
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="example">Example&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-py" data-lang="py">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">dagster_qdrant&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">QdrantConfig&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">QdrantResource&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">dagster&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">dg&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nd">@dg.asset&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">def&lt;/span> &lt;span class="nf">my_table&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">qdrant_resource&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">QdrantResource&lt;/span>&lt;span class="p">):&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">with&lt;/span> &lt;span class="n">qdrant_resource&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">get_client&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="n">qdrant&lt;/span>&lt;span class="p">:&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">qdrant&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">collection_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;test_collection&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">documents&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;This is a document about oranges&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;This is a document about pineapples&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;This is a document about strawberries&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;This is a document about cucumbers&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">results&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">qdrant&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">query&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">collection_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;test_collection&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">query_text&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;hawaii&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">limit&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">3&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">defs&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">dg&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Definitions&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">assets&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">my_table&lt;/span>&lt;span class="p">],&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">resources&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;qdrant_resource&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="n">QdrantResource&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">config&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">QdrantConfig&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">host&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;xyz-example.eu-central.aws.cloud.qdrant.io&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">api_key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;your-api-key&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="next-steps">Next steps&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>Dagster &lt;a href="https://docs.dagster.io" target="_blank" rel="noopener nofollow">documentation&lt;/a>&lt;/p></description></item><item><title>DeepEval</title><link>https://qdrant.tech/documentation/frameworks/deepeval/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/deepeval/</guid><description>&lt;h1 id="deepeval">DeepEval&lt;/h1>
+&lt;p>&lt;a href="https://deepeval.com" target="_blank" rel="noopener nofollow">DeepEval&lt;/a> by Confident AI is an open-source framework for testing large language model systems. Similar to Pytest but designed for LLM outputs, it evaluates metrics like G-Eval, hallucination, answer relevancy.&lt;/p>
+&lt;p>DeepEval can be integrated with Qdrant to evaluate RAG pipelines — ensuring your LLM applications return relevant, grounded, and faithful responses based on retrieved vector search context.&lt;/p>
+&lt;h2 id="how-it-works">How it works&lt;/h2>
+&lt;p>A test case is a blueprint provided by DeepEval to unit test LLM outputs. There are two types of test cases in DeepEval:&lt;/p></description></item><item><title>DocArray</title><link>https://qdrant.tech/documentation/frameworks/docarray/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/docarray/</guid><description>&lt;h1 id="docarray">DocArray&lt;/h1>
+&lt;p>You can use Qdrant natively in DocArray, where Qdrant serves as a high-performance document store to enable scalable vector search.&lt;/p>
+&lt;p>DocArray is a library from Jina AI for nested, unstructured data in transit, including text, image, audio, video, 3D mesh, etc.
+It allows deep-learning engineers to efficiently process, embed, search, recommend, store, and transfer the data with a Pythonic API.&lt;/p>
+&lt;p>To install DocArray with Qdrant support, please do&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install &lt;span class="s2">&amp;#34;docarray[qdrant]&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="further-reading">Further Reading&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://docarray.jina.ai/advanced/document-store/qdrant/" target="_blank" rel="noopener nofollow">DocArray documentations&lt;/a>.&lt;/li>
+&lt;li>&lt;a href="https://github.com/docarray/docarray/blob/main/docarray/index/backends/qdrant.py" target="_blank" rel="noopener nofollow">Source Code&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>dsRAG</title><link>https://qdrant.tech/documentation/frameworks/dsrag/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/dsrag/</guid><description>&lt;h1 id="dsrag">dsRAG&lt;/h1>
+&lt;p>&lt;a href="https://github.com/D-Star-AI/dsRAG" target="_blank" rel="noopener nofollow">dsRAG&lt;/a> is a retrieval engine for unstructured data. It is especially good at handling challenging queries over dense text, like financial reports, legal documents, and academic papers. dsRAG achieves substantially higher accuracy than vanilla RAG baselines on complex open-book question answering tasks&lt;/p>
+&lt;p>You can use the Qdrant connector in dsRAG to add and semantically retrieve documents from your collections.&lt;/p>
+&lt;h2 id="usage-example">Usage Example&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">dsrag.database.vector&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">QdrantVectorDB&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="nn">numpy&lt;/span> &lt;span class="k">as&lt;/span> &lt;span class="nn">np&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">qdrant_clien&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">models&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">db&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">QdrantVectorDB&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">kb_id&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="bp">self&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">kb_id&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">url&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;http://localhost:6334&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">prefer_grpc&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="kc">True&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">vectors&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>&lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">array&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">]),&lt;/span> &lt;span class="n">np&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">array&lt;/span>&lt;span class="p">([&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">])]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># You can use any document loaders available with dsRAG&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1"># We&amp;#39;ll use literals for demonstration&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">documents&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">[&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;doc_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_index&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">0&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_header&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Header1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_text&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Text1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;doc_id&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;2&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_index&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="mi">1&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_header&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Header2&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;chunk_text&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;Text2&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">},&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">db&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">add_vectors&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">vectors&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">documents&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">metadata_filter&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">Filter&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="n">must&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">FieldCondition&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">key&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;doc_id&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="k">match&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">models&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">MatchValue&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">value&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;1&amp;#34;&lt;/span>&lt;span class="p">))]&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">db&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">search&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">query_vector&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">top_k&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="mi">4&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="n">metadata_filter&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">metadata_filter&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="further-reading">Further Reading&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/D-Star-AI/dsRAG" target="_blank" rel="noopener nofollow">dsRAG Source&lt;/a>.&lt;/li>
+&lt;li>&lt;a href="https://github.com/D-Star-AI/dsRAG/tree/main/examples" target="_blank" rel="noopener nofollow">dsRAG Examples&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Dynamiq</title><link>https://qdrant.tech/documentation/frameworks/dynamiq/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/dynamiq/</guid><description>&lt;h1 id="dynamiq">Dynamiq&lt;/h1>
+&lt;p>Dynamiq is your all-in-one Gen AI framework, designed to streamline the development of AI-powered applications. Dynamiq specializes in orchestrating retrieval-augmented generation (RAG) and large language model (LLM) agents.&lt;/p>
+&lt;p>Qdrant is a vector database available in Dynamiq, capable of serving multiple roles. It can be used for writing and retrieving documents, acting as memory for agent interactions, and functioning as a retrieval tool that agents can call when needed.&lt;/p>
+&lt;h2 id="installing">Installing&lt;/h2>
+&lt;p>First, ensure you have the &lt;code>dynamiq&lt;/code> library installed:&lt;/p></description></item><item><title>Feast</title><link>https://qdrant.tech/documentation/frameworks/feast/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/feast/</guid><description>&lt;h2 id="feast">Feast&lt;/h2>
+&lt;p>&lt;a href="https://docs.feast.dev" target="_blank" rel="noopener nofollow">Feast (&lt;strong>Fe&lt;/strong>ature &lt;strong>St&lt;/strong>ore)&lt;/a> is an open-source feature store that helps teams operate production ML systems at scale by allowing them to define, manage, validate, and serve features for production AI/ML.&lt;/p>
+&lt;p>Qdrant is available as a supported vectorstore in Feast to integrate in your workflows.&lt;/p>
+&lt;h2 id="insatallation">Insatallation&lt;/h2>
+&lt;p>To use the Qdrant online store, you need to install Feast with the &lt;code>qdrant&lt;/code> extra.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install &lt;span class="s1">&amp;#39;feast[qdrant]&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>An example config with Qdrant could look like:&lt;/p></description></item><item><title>FiftyOne</title><link>https://qdrant.tech/documentation/frameworks/fifty-one/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/fifty-one/</guid><description>&lt;h1 id="fiftyone">FiftyOne&lt;/h1>
+&lt;p>&lt;a href="https://voxel51.com/" target="_blank" rel="noopener nofollow">FiftyOne&lt;/a> is an open-source toolkit designed to enhance computer vision workflows by optimizing dataset quality
+and providing valuable insights about your models. FiftyOne 0.20, which includes a native integration with Qdrant, supporting workflows
+like &lt;a href="https://docs.voxel51.com/user_guide/brain.html#image-similarity" target="_blank" rel="noopener nofollow">image similarity search&lt;/a> and
+&lt;a href="https://docs.voxel51.com/user_guide/brain.html#text-similarity" target="_blank" rel="noopener nofollow">text search&lt;/a>.&lt;/p>
+&lt;p>Qdrant helps FiftyOne to find the most similar images in the dataset using vector embeddings.&lt;/p>
+&lt;p>FiftyOne is available as a Python package that might be installed in the following way:&lt;/p></description></item><item><title>Firebase Genkit</title><link>https://qdrant.tech/documentation/frameworks/genkit/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/genkit/</guid><description>&lt;h1 id="firebase-genkit">Firebase Genkit&lt;/h1>
+&lt;p>&lt;a href="https://firebase.google.com/products/genkit" target="_blank" rel="noopener nofollow">Genkit&lt;/a> is a framework to build, deploy, and monitor production-ready AI-powered apps.&lt;/p>
+&lt;p>You can build apps that generate custom content, use semantic search, handle unstructured inputs, answer questions with your business data, autonomously make decisions, orchestrate tool calls, and more.&lt;/p>
+&lt;p>You can use Qdrant for indexing/semantic retrieval of data in your Genkit applications via the &lt;a href="https://github.com/qdrant/qdrant-genkit" target="_blank" rel="noopener nofollow">Qdrant-Genkit plugin&lt;/a>.&lt;/p>
+&lt;p>Genkit currently supports server-side development in JavaScript/TypeScript (Node.js) with Go support in active development.&lt;/p></description></item><item><title>Haystack</title><link>https://qdrant.tech/documentation/frameworks/haystack/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/haystack/</guid><description>&lt;h1 id="haystack">Haystack&lt;/h1>
+&lt;p>&lt;a href="https://haystack.deepset.ai/" target="_blank" rel="noopener nofollow">Haystack&lt;/a> serves as a comprehensive NLP framework, offering a modular methodology for constructing
+cutting-edge generative AI, QA, and semantic knowledge base search systems. A critical element in contemporary NLP systems is an
+efficient database for storing and retrieving extensive text data. Vector databases excel in this role, as they house vector
+representations of text and implement effective methods for swift retrieval. Thus, we are happy to announce the integration
+with Haystack - &lt;code>QdrantDocumentStore&lt;/code>. This document store is unique, as it is maintained externally by the Qdrant team.&lt;/p></description></item><item><title>HoneyHive</title><link>https://qdrant.tech/documentation/frameworks/honeyhive/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/honeyhive/</guid><description>&lt;h1 id="honeyhive">HoneyHive&lt;/h1>
+&lt;p>&lt;a href="https://www.honeyhive.ai/" target="_blank" rel="noopener nofollow">HoneyHive&lt;/a> is an AI evaluation and observability platform for Generative AI applications. HoneyHive’s platform gives developers enterprise-grade tools to debug complex retrieval pipelines, evaluate performance over large test suites, monitor usage in real-time, and manage prompts within a shared workspace. Teams use HoneyHive to iterate faster, detect failures at scale, and deliver exceptional AI products.&lt;/p>
+&lt;p>By integrating Qdrant with HoneyHive, you can:&lt;/p>
+&lt;ul>
+&lt;li>Trace vector database operations&lt;/li>
+&lt;li>Monitor latency, embedding quality, and context relevance&lt;/li>
+&lt;li>Evaluate retrieval performance in your RAG pipelines&lt;/li>
+&lt;li>Optimize paramaters such as &lt;code>chunk_size&lt;/code> or &lt;code>chunk_overlap&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ul>
+&lt;li>A HoneyHive account and API key&lt;/li>
+&lt;li>Python 3.8+&lt;/li>
+&lt;/ul>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>Install the required packages:&lt;/p></description></item><item><title>Langchain</title><link>https://qdrant.tech/documentation/frameworks/langchain/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/langchain/</guid><description>&lt;h1 id="langchain">Langchain&lt;/h1>
+&lt;p>Langchain is a library that makes developing Large Language Model-based applications much easier. It unifies the interfaces
+to different libraries, including major embedding providers and Qdrant. Using Langchain, you can focus on the business value instead of writing the boilerplate.&lt;/p>
+&lt;p>Langchain distributes the Qdrant integration as a partner package.&lt;/p>
+&lt;p>It might be installed with pip:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install langchain-qdrant
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The integration supports searching for relevant documents usin dense/sparse and hybrid retrieval.&lt;/p></description></item><item><title>Langchain Go</title><link>https://qdrant.tech/documentation/frameworks/langchain-go/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/langchain-go/</guid><description>&lt;h1 id="langchain-go">Langchain Go&lt;/h1>
+&lt;p>&lt;a href="https://tmc.github.io/langchaingo/docs/" target="_blank" rel="noopener nofollow">Langchain Go&lt;/a> is a framework for developing data-aware applications powered by language models in Go.&lt;/p>
+&lt;p>You can use Qdrant as a vector store in Langchain Go.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>Install the &lt;code>langchain-go&lt;/code> project dependency&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">go get -u github.com/tmc/langchaingo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Before you use the following code sample, customize the following values for your configuration:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>YOUR_QDRANT_REST_URL&lt;/code>: If you&amp;rsquo;ve set up Qdrant using the &lt;a href="https://qdrant.tech/documentation/quick-start/">Quick Start&lt;/a> guide,
+set this value to &lt;code>http://localhost:6333&lt;/code>.&lt;/li>
+&lt;li>&lt;code>YOUR_COLLECTION_NAME&lt;/code>: Use our &lt;a href="https://qdrant.tech/documentation/concepts/collections/">Collections&lt;/a> guide to create or
+list collections.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-go" data-lang="go">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">package&lt;/span> &lt;span class="nx">main&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;log&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;net/url&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;github.com/tmc/langchaingo/embeddings&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;github.com/tmc/langchaingo/llms/openai&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;github.com/tmc/langchaingo/vectorstores/qdrant&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kd">func&lt;/span> &lt;span class="nf">main&lt;/span>&lt;span class="p">()&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">llm&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">err&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">openai&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">New&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nx">err&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="kc">nil&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Fatal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">e&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">err&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">embeddings&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">NewEmbedder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">llm&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nx">err&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="kc">nil&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Fatal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">url&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">err&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">url&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Parse&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;YOUR_QDRANT_REST_URL&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nx">err&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="kc">nil&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Fatal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">store&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">err&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="nx">qdrant&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">New&lt;/span>&lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">qdrant&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">WithURL&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">*&lt;/span>&lt;span class="nx">url&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">qdrant&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">WithCollectionName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;YOUR_COLLECTION_NAME&amp;#34;&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">qdrant&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">WithEmbedder&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">e&lt;/span>&lt;span class="p">),&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="k">if&lt;/span> &lt;span class="nx">err&lt;/span> &lt;span class="o">!=&lt;/span> &lt;span class="kc">nil&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">log&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">Fatal&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">err&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="further-reading">Further Reading&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>You can find usage examples of Langchain Go &lt;a href="https://github.com/tmc/langchaingo/tree/main/examples" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/p></description></item><item><title>Langchain4J</title><link>https://qdrant.tech/documentation/frameworks/langchain4j/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/langchain4j/</guid><description>&lt;h1 id="langchain-for-java">LangChain for Java&lt;/h1>
+&lt;p>LangChain for Java, also known as &lt;a href="https://github.com/langchain4j/langchain4j" target="_blank" rel="noopener nofollow">Langchain4J&lt;/a>, is a community port of &lt;a href="https://www.langchain.com/" target="_blank" rel="noopener nofollow">Langchain&lt;/a> for building context-aware AI applications in Java&lt;/p>
+&lt;p>You can use Qdrant as a vector store in Langchain4J through the &lt;a href="https://central.sonatype.com/artifact/dev.langchain4j/langchain4j-qdrant" target="_blank" rel="noopener nofollow">&lt;code>langchain4j-qdrant&lt;/code>&lt;/a> module.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>Add the &lt;code>langchain4j-qdrant&lt;/code> to your project dependencies.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>dev.langchain4j&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>langchain4j-qdrant&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;version&amp;gt;&lt;/span>VERSION&lt;span class="nt">&amp;lt;/version&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Before you use the following code sample, customize the following values for your configuration:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>YOUR_COLLECTION_NAME&lt;/code>: Use our &lt;a href="https://qdrant.tech/documentation/concepts/collections/">Collections&lt;/a> guide to create or
+list collections.&lt;/li>
+&lt;li>&lt;code>YOUR_HOST_URL&lt;/code>: Use the GRPC URL for your system. If you used the &lt;a href="https://qdrant.tech/documentation/quick-start/">Quick Start&lt;/a> guide,
+it may be http://localhost:6334. If you&amp;rsquo;ve deployed in the &lt;a href="https://qdrant.tech/documentation/cloud/">Qdrant Cloud&lt;/a>, you may have a
+longer URL such as &lt;code>https://example.location.cloud.qdrant.io:6334&lt;/code>.&lt;/li>
+&lt;li>&lt;code>YOUR_API_KEY&lt;/code>: Substitute the API key associated with your configuration.&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">dev.langchain4j.store.embedding.EmbeddingStore&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">dev.langchain4j.store.embedding.qdrant.QdrantEmbeddingStore&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">EmbeddingStore&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">TextSegment&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">embeddingStore&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">QdrantEmbeddingStore&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">builder&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Ensure the collection is configured with the appropriate dimensions&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// of the embedding model.&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// Reference https://qdrant.tech/documentation/concepts/collections/&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">collectionName&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;YOUR_COLLECTION_NAME&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">host&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;YOUR_HOST_URL&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="c1">// GRPC port of the Qdrant server&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">port&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">6334&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">apiKey&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;YOUR_API_KEY&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="na">build&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>QdrantEmbeddingStore&lt;/code> supports all the semantic features of Langchain4J.&lt;/p></description></item><item><title>LangGraph</title><link>https://qdrant.tech/documentation/frameworks/langgraph/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/langgraph/</guid><description>&lt;h1 id="langgraph">LangGraph&lt;/h1>
+&lt;p>&lt;a href="https://github.com/langchain-ai/langgraph" target="_blank" rel="noopener nofollow">LangGraph&lt;/a> is a library for building stateful, multi-actor applications, ideal for creating agentic workflows. It provides fine-grained control over both the flow and state of your application, crucial for creating reliable agents.&lt;/p>
+&lt;p>You can define flows that involve cycles, essential for most agentic architectures, differentiating it from DAG-based solutions. Additionally, LangGraph includes built-in persistence, enabling advanced human-in-the-loop and memory features.&lt;/p>
+&lt;p>LangGraph works seamlessly with all the components of LangChain. This means we can utilize Qdrant&amp;rsquo;s &lt;a href="https://qdrant.tech/documentation/frameworks/langchain/">Langchain integration&lt;/a> to create retrieval nodes in LangGraph, available in both Python and Javascript!&lt;/p></description></item><item><title>LlamaIndex</title><link>https://qdrant.tech/documentation/frameworks/llama-index/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/llama-index/</guid><description>&lt;h1 id="llamaindex">LlamaIndex&lt;/h1>
+&lt;p>Llama Index acts as an interface between your external data and Large Language Models. So you can bring your
+private data and augment LLMs with it. LlamaIndex simplifies data ingestion and indexing, integrating Qdrant as a vector index.&lt;/p>
+&lt;p>Installing Llama Index is straightforward if we use pip as a package manager. Qdrant is not installed by default, so we need to
+install it separately. The integration of both tools also comes as another package.&lt;/p></description></item><item><title>Mastra</title><link>https://qdrant.tech/documentation/frameworks/mastra/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/mastra/</guid><description>&lt;h1 id="mastra">Mastra&lt;/h1>
+&lt;p>&lt;a href="https://mastra.ai/" target="_blank" rel="noopener nofollow">Mastra&lt;/a> is a Typescript framework to build AI applications and features quickly. It gives you the set of primitives you need: workflows, agents, RAG, integrations, syncs and evals. You can run Mastra on your local machine, or deploy to a serverless cloud.&lt;/p>
+&lt;p>Qdrant is available as a vector store in Mastra node to augment application with retrieval capabilities.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">npm install @mastra/core
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">QdrantVector&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;@mastra/rag&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">qdrant&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nx">QdrantVector&lt;/span>&lt;span class="p">({&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">url&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;https://xyz-example.eu-central.aws.cloud.qdrant.io:6333&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">apiKey&lt;/span>&lt;span class="o">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;YOUR_API_KEY&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nx">https&lt;/span>: &lt;span class="kt">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">});&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="constructor-options">Constructor Options&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Name&lt;/th>
+ &lt;th>Type&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>url&lt;/code>&lt;/td>
+ &lt;td>&lt;code>string&lt;/code>&lt;/td>
+ &lt;td>REST URL of the Qdrant instance. Eg. &lt;a href="https://xyz-example.eu-central.aws.cloud.qdrant.io:6333" target="_blank" rel="noopener nofollow">https://xyz-example.eu-central.aws.cloud.qdrant.io:6333&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>apiKey&lt;/code>&lt;/td>
+ &lt;td>&lt;code>string&lt;/code>&lt;/td>
+ &lt;td>Optional Qdrant API key&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>https&lt;/code>&lt;/td>
+ &lt;td>&lt;code>boolean&lt;/code>&lt;/td>
+ &lt;td>Whether to use TLS when setting up the connection. Recommended.&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="methods">Methods&lt;/h2>
+&lt;h3 id="createindex">&lt;code>createIndex()&lt;/code>&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Name&lt;/th>
+ &lt;th>Type&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;th>Default Value&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>indexName&lt;/code>&lt;/td>
+ &lt;td>&lt;code>string&lt;/code>&lt;/td>
+ &lt;td>Name of the index to create&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>dimension&lt;/code>&lt;/td>
+ &lt;td>&lt;code>number&lt;/code>&lt;/td>
+ &lt;td>Vector dimension size&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>metric&lt;/code>&lt;/td>
+ &lt;td>&lt;code>string&lt;/code>&lt;/td>
+ &lt;td>Distance metric for similarity search&lt;/td>
+ &lt;td>&lt;code>cosine&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="upsert">&lt;code>upsert()&lt;/code>&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Name&lt;/th>
+ &lt;th>Type&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;th>Default Value&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>vectors&lt;/code>&lt;/td>
+ &lt;td>&lt;code>number[][]&lt;/code>&lt;/td>
+ &lt;td>Array of embedding vectors&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>metadata&lt;/code>&lt;/td>
+ &lt;td>&lt;code>Record&amp;lt;string, any&amp;gt;[]&lt;/code>&lt;/td>
+ &lt;td>Metadata for each vector (optional)&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>namespace&lt;/code>&lt;/td>
+ &lt;td>&lt;code>string&lt;/code>&lt;/td>
+ &lt;td>Optional namespace for organization&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="query">&lt;code>query()&lt;/code>&lt;/h3>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Name&lt;/th>
+ &lt;th>Type&lt;/th>
+ &lt;th>Description&lt;/th>
+ &lt;th>Default Value&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>&lt;code>vector&lt;/code>&lt;/td>
+ &lt;td>&lt;code>number[]&lt;/code>&lt;/td>
+ &lt;td>Query vector to find similar vectors&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>topK&lt;/code>&lt;/td>
+ &lt;td>&lt;code>number&lt;/code>&lt;/td>
+ &lt;td>Number of results to return (optional)&lt;/td>
+ &lt;td>&lt;code>10&lt;/code>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>&lt;code>filter&lt;/code>&lt;/td>
+ &lt;td>&lt;code>Record&amp;lt;string, any&amp;gt;&lt;/code>&lt;/td>
+ &lt;td>Metadata filters for the query (optional)&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h3 id="listindexes">&lt;code>listIndexes()&lt;/code>&lt;/h3>
+&lt;p>Returns an array of index names as strings.&lt;/p></description></item><item><title>Mem0</title><link>https://qdrant.tech/documentation/frameworks/mem0/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/mem0/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/mem0/mem0-banner.png" alt="Mem0 Logo">&lt;/p>
+&lt;p>&lt;a href="https://mem0.ai" target="_blank" rel="noopener nofollow">Mem0&lt;/a> is a self-improving memory layer for LLM applications, enabling personalized AI experiences that save costs and delight users. Mem0 remembers user preferences, adapts to individual needs, and continuously improves over time, ideal for chatbots and AI systems.&lt;/p>
+&lt;p>Mem0 supports various vector store providers, including Qdrant, for efficient data handling and search capabilities.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>To install Mem0 with Qdrant support, use the following command:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-sh" data-lang="sh">&lt;span class="line">&lt;span class="cl">pip install mem0ai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Here&amp;rsquo;s a basic example of how to use Mem0 with Qdrant:&lt;/p></description></item><item><title>Microsoft NLWeb</title><link>https://qdrant.tech/documentation/frameworks/nlweb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/nlweb/</guid><description>&lt;h1 id="nlweb">NLWeb&lt;/h1>
+&lt;p>Microsoft&amp;rsquo;s &lt;a href="https://github.com/microsoft/NLWeb" target="_blank" rel="noopener nofollow">NLWeb&lt;/a> is a proposed framework that enables natural language interfaces for websites, using Schema.org, formats like RSS and the emerging &lt;a href="https://github.com/microsoft/NLWeb/blob/main/docs/RestAPI.md" target="_blank" rel="noopener nofollow">MCP protocol&lt;/a>.&lt;/p>
+&lt;p>Qdrant is supported as a vector store backend within NLWeb for embedding storage and context retrieval.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>NLWeb includes Qdrant integration by default. You can install and configure it to use Qdrant as the retrieval engine.&lt;/p>
+&lt;h3 id="installation">Installation&lt;/h3>
+&lt;p>Clone the repo and set up your environment:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">git clone https://github.com/microsoft/NLWeb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> NLWeb
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">python -m venv .venv
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">source&lt;/span> venv/bin/activate &lt;span class="c1"># or `venv\Scripts\activate` on Windows&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nb">cd&lt;/span> code
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">pip install -r requirements.txt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="configuring-qdrant">Configuring Qdrant&lt;/h3>
+&lt;p>To use &lt;strong>Qdrant&lt;/strong>, update your configuration.&lt;/p></description></item><item><title>Neo4j GraphRAG</title><link>https://qdrant.tech/documentation/frameworks/neo4j-graphrag/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/neo4j-graphrag/</guid><description>&lt;h1 id="neo4j-graphrag">Neo4j GraphRAG&lt;/h1>
+&lt;p>&lt;a href="https://neo4j.com/docs/neo4j-graphrag-python/current/" target="_blank" rel="noopener nofollow">Neo4j GraphRAG&lt;/a> is a Python package to build graph retrieval augmented generation (GraphRAG) applications using Neo4j and Python. As a first-party library, it offers a robust, feature-rich, and high-performance solution, with the added assurance of long-term support and maintenance directly from Neo4j. It offers a Qdrant retriever natively to search for vectors stored in a Qdrant collection.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install neo4j-graphrag&lt;span class="o">[&lt;/span>qdrant&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>A vector query with Neo4j and Qdrant could look like:&lt;/p></description></item><item><title>OpenAI Agents</title><link>https://qdrant.tech/documentation/frameworks/openai-agents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/openai-agents/</guid><description>&lt;h1 id="openai-agents">OpenAI Agents&lt;/h1>
+&lt;p>&lt;a href="https://github.com/openai/openai-agents-python" target="_blank" rel="noopener nofollow">OpenAI Agents&lt;/a> is a Python framework to build agentic AI apps in a lightweight, easy-to-use package with very few abstractions. It&amp;rsquo;s a production-ready upgrade of the experimental framework, &lt;a href="https://github.com/openai/swarm" target="_blank" rel="noopener nofollow">Swarm&lt;/a>.&lt;/p>
+&lt;h2 id="getting-started">Getting Started&lt;/h2>
+&lt;p>To start using OpenAI Agents, follow these steps:&lt;/p>
+&lt;ul>
+&lt;li>Install the package&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install openai-agents
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Set up your OpenAI API key&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nb">export&lt;/span> &lt;span class="nv">OPENAI_API_KEY&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;YOUR_KEY&amp;gt;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="how-it-works">How It Works&lt;/h2>
+&lt;p>The Agents SDK has a very small set of primitives:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>Agents&lt;/code>, which are LLMs equipped with instructions and tools&lt;/li>
+&lt;li>&lt;code>Handoffs&lt;/code>, which allow agents to delegate to other agents for specific tasks&lt;/li>
+&lt;li>&lt;code>Guardrails&lt;/code>, which enable the inputs to agents to be validated&lt;/li>
+&lt;/ul>
+&lt;p>Used with Python, these building blocks make it easy to create real-world apps with tool-agent interactions and minimal learning curve. Plus, the SDK also includes tracing to help you debug, evaluate, and fine-tune your agent workflows.&lt;/p></description></item><item><title>Pandas-AI</title><link>https://qdrant.tech/documentation/frameworks/pandas-ai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/pandas-ai/</guid><description>&lt;h1 id="pandas-ai">Pandas-AI&lt;/h1>
+&lt;p>Pandas-AI is a Python library that uses a generative AI model to interpret natural language queries and translate them into Python code to interact with pandas data frames and return the final results to the user.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-console" data-lang="console">&lt;span class="line">&lt;span class="cl">&lt;span class="go">pip install pandasai[qdrant]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>You can begin a conversation by instantiating an &lt;code>Agent&lt;/code> instance based on your Pandas data frame. The default Pandas-AI LLM requires an &lt;a href="https://pandabi.ai" target="_blank" rel="noopener nofollow">API key&lt;/a>.&lt;/p>
+&lt;p>You can find the list of all supported LLMs &lt;a href="https://docs.pandas-ai.com/en/latest/LLMs/llms/" target="_blank" rel="noopener nofollow">here&lt;/a>&lt;/p></description></item><item><title>Pinecone Canopy</title><link>https://qdrant.tech/documentation/frameworks/canopy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/canopy/</guid><description>&lt;h1 id="pinecone-canopy">Pinecone Canopy&lt;/h1>
+&lt;p>&lt;a href="https://github.com/pinecone-io/canopy" target="_blank" rel="noopener nofollow">Canopy&lt;/a> is an open-source framework and context engine to build chat assistants at scale.&lt;/p>
+&lt;p>Qdrant is supported as a knowledge base within Canopy for context retrieval and augmented generation.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Install the SDK with the Qdrant extra as described in the &lt;a href="https://github.com/pinecone-io/canopy?tab=readme-ov-file#extras" target="_blank" rel="noopener nofollow">Canopy README&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install canopy-sdk&lt;span class="o">[&lt;/span>qdrant&lt;span class="o">]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="creating-a-knowledge-base">Creating a knowledge base&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">canopy.knowledge_base&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">QdrantKnowledgeBase&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">kb&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">QdrantKnowledgeBase&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">collection_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;YOUR_COLLECTION_NAME&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;aside role="status">The constructor accepts additional &lt;a href="https://github.com/qdrant/qdrant-client/blob/eda201a1dbf1bbc67415f8437a5619f6f83e8ac6/qdrant_client/qdrant_client.py#L36-L61">options&lt;/a> to customize your connection to Qdrant.&lt;/aside>
+&lt;p>To create a new Qdrant collection and connect it to the knowledge base, use the &lt;code>create_canopy_collection&lt;/code> method:&lt;/p></description></item><item><title>Ragbits</title><link>https://qdrant.tech/documentation/frameworks/ragbits/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/ragbits/</guid><description>&lt;h1 id="ragbits">Ragbits&lt;/h1>
+&lt;p>&lt;a href="https://ragbits.deepsense.ai" target="_blank" rel="noopener nofollow">Ragbit&lt;/a> is a Python package that offers essential &amp;ldquo;bits&amp;rdquo; for building powerful Retrieval-Augmented Generation (RAG) applications. It prioritizes developer experience by providing a simple and intuitive API. It also includes a comprehensive set of tools for seamlessly building, testing, and deploying your RAG applications efficiently.&lt;/p>
+&lt;p>Qdrant is available as a vectorstore in Ragbits to ingest and search search documents from a collection.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>Install the Python package that comes bundled with the Qdrant integration.&lt;/p></description></item><item><title>Rig-rs</title><link>https://qdrant.tech/documentation/frameworks/rig-rs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/rig-rs/</guid><description>&lt;h1 id="rig-rs">Rig-rs&lt;/h1>
+&lt;p>&lt;a href="http://rig.rs" target="_blank" rel="noopener nofollow">Rig&lt;/a> is a Rust library for building scalable, modular, and ergonomic LLM-powered applications. It has full support for LLM completion and embedding workflows with minimal boiler plate.&lt;/p>
+&lt;p>Rig supports Qdrant as a vectorstore to ingest and search for documents semantically.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-console" data-lang="console">&lt;span class="line">&lt;span class="cl">&lt;span class="go">cargo add rig-core rig-qdrant qdrant-client
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Here&amp;rsquo;s an example ingest and retrieve flow using Rig and Qdrant.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-rust" data-lang="rust">&lt;span class="line">&lt;span class="cl">&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">qdrant_client&lt;/span>::&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">qdrant&lt;/span>::&lt;span class="p">{&lt;/span>&lt;span class="n">PointStruct&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">QueryPointsBuilder&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">UpsertPointsBuilder&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">Payload&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Qdrant&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">};&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">rig&lt;/span>::&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">embeddings&lt;/span>::&lt;span class="n">EmbeddingsBuilder&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">providers&lt;/span>::&lt;span class="n">openai&lt;/span>::&lt;span class="p">{&lt;/span>&lt;span class="n">Client&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="no">TEXT_EMBEDDING_3_SMALL&lt;/span>&lt;span class="p">},&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">vector_store&lt;/span>::&lt;span class="n">VectorStoreIndex&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="p">};&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">rig_qdrant&lt;/span>::&lt;span class="n">QdrantVectorStore&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">use&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">serde_json&lt;/span>::&lt;span class="n">json&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="k">const&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="no">COLLECTION_NAME&lt;/span>: &lt;span class="kp">&amp;amp;&lt;/span>&lt;span class="kt">str&lt;/span> &lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;rig-collection&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Initialize Qdrant client.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Qdrant&lt;/span>::&lt;span class="n">from_url&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;http://localhost:6334&amp;#34;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">build&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="o">?&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="c1">// Initialize OpenAI client.
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="c1">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">openai_client&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">Client&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;&amp;lt;OPENAI_API_KEY&amp;gt;&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">model&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">openai_client&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">embedding_model&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="no">TEXT_EMBEDDING_3_SMALL&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">documents&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">EmbeddingsBuilder&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">model&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">clone&lt;/span>&lt;span class="p">())&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">simple_document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;0981d983-a5f8-49eb-89ea-f7d3b2196d2e&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;Definition of a *flurbo*: A flurbo is a green alien that lives on cold planets&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">simple_document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;62a36d43-80b6-4fd6-990c-f75bb02287d1&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;Definition of a *glarb-glarb*: A glarb-glarb is a ancient tool used by the ancestors of the inhabitants of planet Jiro to farm the land.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">simple_document&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;f9e17d59-32e5-440c-be02-b2759a654824&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;Definition of a *linglingdong*: A term used by inhabitants of the far side of the moon to describe humans.&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">build&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">await&lt;/span>&lt;span class="o">?&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">points&lt;/span>: &lt;span class="nb">Vec&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">PointStruct&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">documents&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">into_iter&lt;/span>&lt;span class="p">()&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="p">{&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">vec&lt;/span>: &lt;span class="nb">Vec&lt;/span>&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="kt">f32&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">embeddings&lt;/span>&lt;span class="p">[&lt;/span>&lt;span class="mi">0&lt;/span>&lt;span class="p">].&lt;/span>&lt;span class="n">vec&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">iter&lt;/span>&lt;span class="p">().&lt;/span>&lt;span class="n">map&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="o">|&amp;amp;&lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="o">|&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">x&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">as&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="kt">f32&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">collect&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">PointStruct&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">d&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">id&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">vec&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="n">Payload&lt;/span>::&lt;span class="n">try_from&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="fm">json!&lt;/span>&lt;span class="p">({&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="s">&amp;#34;document&amp;#34;&lt;/span>: &lt;span class="nc">d&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">document&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">}))&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">unwrap&lt;/span>&lt;span class="p">(),&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">})&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">collect&lt;/span>&lt;span class="p">();&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">upsert_points&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">UpsertPointsBuilder&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="no">COLLECTION_NAME&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">points&lt;/span>&lt;span class="p">))&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">await&lt;/span>&lt;span class="o">?&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">query_params&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">QueryPointsBuilder&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="no">COLLECTION_NAME&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="n">with_payload&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="kc">true&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">vector_store&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">QdrantVectorStore&lt;/span>::&lt;span class="n">new&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="n">client&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">model&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">query_params&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">build&lt;/span>&lt;span class="p">());&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="kd">let&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">results&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">vector_store&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">top_n&lt;/span>::&lt;span class="o">&amp;lt;&lt;/span>&lt;span class="n">serde_json&lt;/span>::&lt;span class="n">Value&lt;/span>&lt;span class="o">&amp;gt;&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Define a glarb-glarb?&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="mi">1&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="k">await&lt;/span>&lt;span class="o">?&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="fm">println!&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;Results: &lt;/span>&lt;span class="si">{:?}&lt;/span>&lt;span class="s">&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">results&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="further-reading">Further reading&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://rig.rs" target="_blank" rel="noopener nofollow">Rig-rs Documentation&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/0xPlaygrounds/rig" target="_blank" rel="noopener nofollow">Source Code&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Semantic-Router</title><link>https://qdrant.tech/documentation/frameworks/semantic-router/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/semantic-router/</guid><description>&lt;h1 id="semantic-router">Semantic-Router&lt;/h1>
+&lt;p>&lt;a href="https://www.aurelio.ai/semantic-router/" target="_blank" rel="noopener nofollow">Semantic-Router&lt;/a> is a library to build decision-making layers for your LLMs and agents. It uses vector embeddings to make tool-use decisions rather than LLM generations, routing our requests using semantic meaning.&lt;/p>
+&lt;p>Qdrant is available as a supported index in Semantic-Router for you to ingest route data and perform retrievals.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>To use Semantic-Router with Qdrant, install the &lt;code>qdrant&lt;/code> extra:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-console" data-lang="console">&lt;span class="line">&lt;span class="cl">&lt;span class="go">pip install semantic-router[qdrant]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Set up &lt;code>QdrantIndex&lt;/code> with the appropriate configurations:&lt;/p></description></item><item><title>SmolAgents</title><link>https://qdrant.tech/documentation/frameworks/smolagents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/smolagents/</guid><description>&lt;h1 id="smolagents">SmolAgents&lt;/h1>
+&lt;p>HuggingFace &lt;a href="https://github.com/huggingface/smolagents" target="_blank" rel="noopener nofollow">SmolAgents&lt;/a> is a Python library for building AI agents. These agents write Python code to call tools and orchestrate other agents.&lt;/p>
+&lt;p>It uses &lt;code>CodeAgent&lt;/code>. An LLM engine that writes its actions in code. SmolAgents suggests that this approach is demonstrated to work better than the current industry practice of letting the LLM output a dictionary of the tools it wants to call: &lt;a href="https://huggingface.co/papers/2402.01030" target="_blank" rel="noopener nofollow">uses 30% fewer steps&lt;/a> (thus 30% fewer LLM calls)
+and &lt;a href="https://huggingface.co/papers/2411.01747" target="_blank" rel="noopener nofollow">reaches higher performance on difficult benchmarks&lt;/a>.&lt;/p></description></item><item><title>Solon</title><link>https://qdrant.tech/documentation/frameworks/solon/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/solon/</guid><description>&lt;h1 id="solon">Solon&lt;/h1>
+&lt;p>&lt;a href="https://solon.noear.org" target="_blank" rel="noopener nofollow">Solon&lt;/a> is a lightweight, high-performance Java enterprise framework designed for efficient, eco-friendly development. It enhances concurrency, reduces memory usage, speeds up startup, minimizes packaging size, and supports Java 8 to Java 23, offering a flexible alternative to Spring.&lt;/p>
+&lt;p>Qdrant is available as a component in Solon-AI for efficient vector indexing and retrievals.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.noear&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>solon-ai-repo-qdrant&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This is the main extension plugin for &lt;strong>solon-ai&lt;/strong>, which provides the &lt;code>QdrantRepository&lt;/code> knowledge base.&lt;/p></description></item><item><title>Spring AI</title><link>https://qdrant.tech/documentation/frameworks/spring-ai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/spring-ai/</guid><description>&lt;h1 id="spring-ai">Spring AI&lt;/h1>
+&lt;p>&lt;a href="https://docs.spring.io/spring-ai/reference/" target="_blank" rel="noopener nofollow">Spring AI&lt;/a> is a Java framework that provides a &lt;a href="https://spring.io/" target="_blank" rel="noopener nofollow">Spring-friendly&lt;/a> API and abstractions for developing AI applications.&lt;/p>
+&lt;p>Qdrant is available as supported vector database for use within your Spring AI projects.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>You can find the Spring AI installation instructions &lt;a href="https://docs.spring.io/spring-ai/reference/getting-started.html" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/p>
+&lt;p>Add the Qdrant boot starter package.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-xml" data-lang="xml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;groupId&amp;gt;&lt;/span>org.springframework.ai&lt;span class="nt">&amp;lt;/groupId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="nt">&amp;lt;artifactId&amp;gt;&lt;/span>spring-ai-qdrant-store-spring-boot-starter&lt;span class="nt">&amp;lt;/artifactId&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nt">&amp;lt;/dependency&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Configure Qdrant with Spring Boot’s &lt;code>application.properties&lt;/code>.&lt;/p>
+&lt;pre tabindex="0">&lt;code>spring.ai.vectorstore.qdrant.host=&amp;lt;host of your qdrant instance&amp;gt;
+spring.ai.vectorstore.qdrant.port=&amp;lt;the GRPC port of your qdrant instance&amp;gt;
+spring.ai.vectorstore.qdrant.api-key=&amp;lt;your api key&amp;gt;
+spring.ai.vectorstore.qdrant.collection-name=&amp;lt;The name of the collection to use in Qdrant&amp;gt;
+&lt;/code>&lt;/pre>&lt;p>Learn more about these options in the &lt;a href="https://docs.spring.io/spring-ai/reference/api/vectordbs/qdrant.html#qdrant-vectorstore-properties" target="_blank" rel="noopener nofollow">configuration reference&lt;/a>.&lt;/p></description></item><item><title>Stanford DSPy</title><link>https://qdrant.tech/documentation/frameworks/dspy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/dspy/</guid><description>&lt;h1 id="stanford-dspy">Stanford DSPy&lt;/h1>
+&lt;p>&lt;a href="https://github.com/stanfordnlp/dspy" target="_blank" rel="noopener nofollow">DSPy&lt;/a> is the framework for solving advanced tasks with language models (LMs) and retrieval models (RMs). It unifies techniques for prompting and fine-tuning LMs — and approaches for reasoning, self-improvement, and augmentation with retrieval and tools.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Provides composable and declarative modules for instructing LMs in a familiar Pythonic syntax.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Introduces an automatic compiler that teaches LMs how to conduct the declarative steps in your program.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>Qdrant can be used as a retrieval mechanism in the DSPy flow.&lt;/p></description></item><item><title>Superduper</title><link>https://qdrant.tech/documentation/frameworks/superduper/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/superduper/</guid><description>&lt;h1 id="superduper">Superduper&lt;/h1>
+&lt;p>&lt;a href="https://superduper.io/" target="_blank" rel="noopener nofollow">Superduper&lt;/a> is a framework for building flexible, compositional AI applications which may be applied directly to databases using a declarative programming model. These applications declare and maintain a desired state of the database, and use the database directly to store outputs of AI components, meta-data about the components and data pertaining to the state of the system.&lt;/p>
+&lt;p>Qdrant is available as a vector search provider in Superduper.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install superduper-framework
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="setup">Setup&lt;/h2>
+&lt;ul>
+&lt;li>To use Qdrant for vector search layer, create a &lt;code>settings.yaml&lt;/code> file with the following config.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>settings.yaml&lt;/p></description></item><item><title>Sycamore</title><link>https://qdrant.tech/documentation/frameworks/sycamore/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/sycamore/</guid><description>&lt;h2 id="sycamore">Sycamore&lt;/h2>
+&lt;p>&lt;a href="https://sycamore.readthedocs.io/en/stable/" target="_blank" rel="noopener nofollow">Sycamore&lt;/a> is an LLM-powered data preparation, processing, and analytics system for complex, unstructured documents like PDFs, HTML, presentations, and more. With Aryn, you can prepare data for GenAI and RAG applications, power high-quality document processing workflows, and run analytics on large document collections with natural language.&lt;/p>
+&lt;p>You can use the Qdrant connector to write into and read documents from Qdrant collections.&lt;/p>
+&lt;aside role="status">You can find an end-to-end example usage of the Qdrant connector &lt;a a target="_blank" href="https://github.com/aryn-ai/sycamore/blob/main/examples/simple_qdrant.py">here.&lt;/a>&lt;/aside>
+&lt;h2 id="writing-to-qdrant">Writing to Qdrant&lt;/h2>
+&lt;p>To write a Docset to a Qdrant collection in Sycamore, use the &lt;code>docset.write.qdrant(....)&lt;/code> function. The Qdrant writer accepts the following arguments:&lt;/p></description></item><item><title>Testcontainers</title><link>https://qdrant.tech/documentation/frameworks/testcontainers/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/testcontainers/</guid><description>&lt;h1 id="testcontainers">Testcontainers&lt;/h1>
+&lt;p>&lt;a href="https://testcontainers.com/" target="_blank" rel="noopener nofollow">Testcontainers&lt;/a> is a testing library that provides easy and lightweight APIs for bootstrapping integration tests with real services wrapped in Docker containers.&lt;/p>
+&lt;p>Qdrant is available as a &lt;a href="https://testcontainers.com/modules/qdrant/" target="_blank" rel="noopener nofollow">Testcontainers module&lt;/a> in multiple languages. It facilitates the spawning of a Qdrant instance for end-to-end testing.&lt;/p>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-java" data-lang="java">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="nn">org.testcontainers.qdrant.QdrantContainer&lt;/span>&lt;span class="p">;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w">&lt;/span>&lt;span class="n">QdrantContainer&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">qdrantContainer&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="k">new&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="n">QdrantContainer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;qdrant/qdrant&amp;#34;&lt;/span>&lt;span class="p">);&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-go" data-lang="go">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">import&lt;/span> &lt;span class="p">(&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;github.com/testcontainers/testcontainers-go&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s">&amp;#34;github.com/testcontainers/testcontainers-go/modules/qdrant&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="nx">qdrantContainer&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">err&lt;/span> &lt;span class="o">:=&lt;/span> &lt;span class="nx">qdrant&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">RunContainer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nx">ctx&lt;/span>&lt;span class="p">,&lt;/span> &lt;span class="nx">testcontainers&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="nf">WithImage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;qdrant/qdrant&amp;#34;&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-typescript" data-lang="typescript">&lt;span class="line">&lt;span class="cl">&lt;span class="kr">import&lt;/span> &lt;span class="p">{&lt;/span> &lt;span class="nx">QdrantContainer&lt;/span> &lt;span class="p">}&lt;/span> &lt;span class="kr">from&lt;/span> &lt;span class="s2">&amp;#34;@testcontainers/qdrant&amp;#34;&lt;/span>&lt;span class="p">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="kr">const&lt;/span> &lt;span class="nx">qdrantContainer&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="k">await&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="nx">QdrantContainer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;qdrant/qdrant&amp;#34;&lt;/span>&lt;span class="p">).&lt;/span>&lt;span class="nx">start&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="kn">from&lt;/span> &lt;span class="nn">testcontainers.qdrant&lt;/span> &lt;span class="kn">import&lt;/span> &lt;span class="n">QdrantContainer&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">qdrant_container&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="n">QdrantContainer&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s2">&amp;#34;qdrant/qdrant&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">start&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-csharp" data-lang="csharp">&lt;span class="line">&lt;span class="cl">&lt;span class="kt">var&lt;/span> &lt;span class="n">qdrantContainer&lt;/span> &lt;span class="p">=&lt;/span> &lt;span class="k">new&lt;/span> &lt;span class="n">QdrantBuilder&lt;/span>&lt;span class="p">()&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">WithImage&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;qdrant/qdrant&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">.&lt;/span>&lt;span class="n">Build&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="k">await&lt;/span> &lt;span class="n">qdrantContainer&lt;/span>&lt;span class="p">.&lt;/span>&lt;span class="n">StartAsync&lt;/span>&lt;span class="p">();&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Testcontainers modules provide options/methods to configure ENVs, volumes, and virtually everything you can configure in a Docker container.&lt;/p></description></item><item><title>txtai</title><link>https://qdrant.tech/documentation/frameworks/txtai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/txtai/</guid><description>&lt;h1 id="txtai">txtai&lt;/h1>
+&lt;p>Qdrant might be also used as an embedding backend in &lt;a href="https://neuml.github.io/txtai/" target="_blank" rel="noopener nofollow">txtai&lt;/a> semantic applications.&lt;/p>
+&lt;p>txtai simplifies building AI-powered semantic search applications using Transformers. It leverages the neural embeddings and their
+properties to encode high-dimensional data in a lower-dimensional space and allows to find similar objects based on their embeddings'
+proximity.&lt;/p>
+&lt;p>Qdrant is not built-in txtai backend and requires installing an additional dependency:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install qdrant-txtai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The examples and some more information might be found in &lt;a href="https://github.com/qdrant/qdrant-txtai" target="_blank" rel="noopener nofollow">qdrant-txtai repository&lt;/a>.&lt;/p></description></item><item><title>Vanna.AI</title><link>https://qdrant.tech/documentation/frameworks/vanna-ai/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/vanna-ai/</guid><description>&lt;h1 id="vannaai">Vanna.AI&lt;/h1>
+&lt;p>&lt;a href="https://vanna.ai/" target="_blank" rel="noopener nofollow">Vanna&lt;/a> is a Python package that uses retrieval augmentation to help you generate accurate SQL queries for your database using LLMs.&lt;/p>
+&lt;p>Vanna works in two easy steps - train a RAG &amp;ldquo;model&amp;rdquo; on your data, and then ask questions which will return SQL queries that can be set up to automatically run on your database.&lt;/p>
+&lt;p>Qdrant is available as a support vector store for ingesting and retrieving your RAG data.&lt;/p></description></item><item><title>VectaX - Mirror Security</title><link>https://qdrant.tech/documentation/frameworks/mirror-security/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/frameworks/mirror-security/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/mirror-security/vectax-logo.png" alt="VectaX Logo">&lt;/p>
+&lt;p>&lt;a href="https://mirrorsecurity.io/vectax" target="_blank" rel="noopener nofollow">VectaX&lt;/a> by Mirror Security is an AI-centric access control and encryption system designed for managing and protecting vector embeddings. It combines similarity-preserving encryption with fine-grained RBAC to enable secure storage, retrieval, and operations on vector data.&lt;/p>
+&lt;p>It can be integrated with Qdrant to secure vector searches.&lt;/p>
+&lt;p>We&amp;rsquo;ll see how to do so using basic VectaX vector encryption and the sophisticated RBAC mechanism. You can obtain an API key and the Mirror SDK from the &lt;a href="https://platform.mirrorsecurity.io/en/login" target="_blank" rel="noopener nofollow">Mirror Security Platform&lt;/a>.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Data Management on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/data-management/</link><description>Recent content in Data Management on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/data-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Airbyte</title><link>https://qdrant.tech/documentation/data-management/airbyte/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/airbyte/</guid><description>&lt;h1 id="airbyte">Airbyte&lt;/h1>
+&lt;p>&lt;a href="https://airbyte.com/" target="_blank" rel="noopener nofollow">Airbyte&lt;/a> is an open-source data integration platform that helps you replicate your data
+between different systems. It has a &lt;a href="https://docs.airbyte.io/integrations" target="_blank" rel="noopener nofollow">growing list of connectors&lt;/a> that can
+be used to ingest data from multiple sources. Building data pipelines is also crucial for managing the data in
+Qdrant, and Airbyte is a great tool for this purpose.&lt;/p>
+&lt;p>Airbyte may take care of the data ingestion from a selected source, while Qdrant will help you to build a search
+engine on top of it. There are three supported modes of how the data can be ingested into Qdrant:&lt;/p></description></item><item><title>Apache Airflow</title><link>https://qdrant.tech/documentation/data-management/airflow/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/airflow/</guid><description>&lt;h1 id="apache-airflow">Apache Airflow&lt;/h1>
+&lt;p>&lt;a href="https://airflow.apache.org/" target="_blank" rel="noopener nofollow">Apache Airflow&lt;/a> is an open-source platform for authoring, scheduling and monitoring data and computing workflows. Airflow uses Python to create workflows that can be easily scheduled and monitored.&lt;/p>
+&lt;p>Qdrant is available as a &lt;a href="https://airflow.apache.org/docs/apache-airflow-providers-qdrant/stable/index.html" target="_blank" rel="noopener nofollow">provider&lt;/a> in Airflow to interface with the database.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>Before configuring Airflow, you need:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>A Qdrant instance to connect to. You can set one up in our &lt;a href="https://qdrant.tech/documentation/guides/installation/">installation guide&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>A running Airflow instance. You can use their &lt;a href="https://airflow.apache.org/docs/apache-airflow/stable/start.html" target="_blank" rel="noopener nofollow">Quick Start Guide&lt;/a>.&lt;/p></description></item><item><title>Apache NiFi</title><link>https://qdrant.tech/documentation/data-management/nifi/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/nifi/</guid><description>&lt;h1 id="apache-nifi">Apache NiFi&lt;/h1>
+&lt;p>&lt;a href="https://nifi.apache.org/" target="_blank" rel="noopener nofollow">NiFi&lt;/a> is a real-time data ingestion platform, which can transfer and manage data transfer between numerous sources and destination systems. It supports many protocols and offers a web-based user interface for developing and monitoring data flows.&lt;/p>
+&lt;p>NiFi supports ingesting and querying data in Qdrant via its processor modules.&lt;/p>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/nifi/nifi-conifg.png" alt="NiFi Qdrant configuration">&lt;/p>
+&lt;p>You can configure Qdrant NiFi processors with your Qdrant credentials, query/upload configurations. The processors offer 2 built-in embedding providers to encode data into vector embeddings - HuggingFace, OpenAI.&lt;/p></description></item><item><title>Apache Spark</title><link>https://qdrant.tech/documentation/data-management/spark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/spark/</guid><description>&lt;h1 id="apache-spark">Apache Spark&lt;/h1>
+&lt;p>&lt;a href="https://spark.apache.org/" target="_blank" rel="noopener nofollow">Spark&lt;/a> is a distributed computing framework designed for big data processing and analytics. The &lt;a href="https://github.com/qdrant/qdrant-spark" target="_blank" rel="noopener nofollow">Qdrant-Spark connector&lt;/a> enables Qdrant to be a storage destination in Spark.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;p>To integrate the connector into your Spark environment, get the JAR file from one of the sources listed below.&lt;/p>
+&lt;ul>
+&lt;li>GitHub Releases&lt;/li>
+&lt;/ul>
+&lt;p>The packaged &lt;code>jar&lt;/code> file with all the required dependencies can be found &lt;a href="https://github.com/qdrant/qdrant-spark/releases" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/p>
+&lt;ul>
+&lt;li>Building from Source&lt;/li>
+&lt;/ul>
+&lt;p>To build the &lt;code>jar&lt;/code> from source, you need &lt;a href="https://www.azul.com/downloads/#zulu" target="_blank" rel="noopener nofollow">JDK@8&lt;/a> and &lt;a href="https://maven.apache.org/" target="_blank" rel="noopener nofollow">Maven&lt;/a> installed. Once the requirements have been satisfied, run the following command in the &lt;a href="https://github.com/qdrant/qdrant-spark" target="_blank" rel="noopener nofollow">project root&lt;/a>.&lt;/p></description></item><item><title>CocoIndex</title><link>https://qdrant.tech/documentation/data-management/cocoindex/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/cocoindex/</guid><description>&lt;h1 id="cocoindex">CocoIndex&lt;/h1>
+&lt;p>&lt;a href="https://cocoindex.com" target="_blank" rel="noopener nofollow">CocoIndex&lt;/a> is a high performance ETL framework to transform data for AI, with real-time incremental processing.&lt;/p>
+&lt;p>Qdrant is available as a native built-in vector database to store and retrieve embeddings.&lt;/p>
+&lt;p>Install CocoIndex:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install -U cocoindex
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Install Postgres with &lt;a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener nofollow">Docker Compose&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">docker compose -f &amp;lt;&lt;span class="o">(&lt;/span>curl -L https://raw.githubusercontent.com/cocoindex-io/cocoindex/refs/heads/main/dev/postgres.yaml&lt;span class="o">)&lt;/span> up -d
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>CocoIndex is a stateful ETL framework and only processes data that has changed. It uses Postgres as a metadata store to track the state of the data.&lt;/p></description></item><item><title>Confluent Kafka</title><link>https://qdrant.tech/documentation/data-management/confluent/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/confluent/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/confluent/confluent-logo.png" alt="Confluent Logo">&lt;/p>
+&lt;p>Built by the original creators of Apache Kafka®, &lt;a href="https://www.confluent.io/confluent-cloud/?utm_campaign=tm.pmm_cd.cwc_partner_Qdrant_generic&amp;amp;utm_source=Qdrant&amp;amp;utm_medium=partnerref" target="_blank" rel="noopener nofollow">Confluent Cloud&lt;/a> is a cloud-native and complete data streaming platform available on AWS, Azure, and Google Cloud. The platform includes a fully managed, elastically scaling Kafka engine, 120+ connectors, serverless Apache Flink®, enterprise-grade security controls, and a robust governance suite.&lt;/p>
+&lt;p>With our &lt;a href="https://github.com/qdrant/qdrant-kafka" target="_blank" rel="noopener nofollow">Qdrant-Kafka Sink Connector&lt;/a>, Qdrant is part of the &lt;a href="https://www.confluent.io/partners/connect/" target="_blank" rel="noopener nofollow">Connect with Confluent&lt;/a> technology partner program. It brings fully managed data streams directly to organizations from Confluent Cloud, making it easier for organizations to stream any data to Qdrant with a fully managed Apache Kafka service.&lt;/p></description></item><item><title>DLT</title><link>https://qdrant.tech/documentation/data-management/dlt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/dlt/</guid><description>&lt;h1 id="dltdata-load-tool">DLT(Data Load Tool)&lt;/h1>
+&lt;p>&lt;a href="https://dlthub.com/" target="_blank" rel="noopener nofollow">DLT&lt;/a> is an open-source library that you can add to your Python scripts to load data from various and often messy data sources into well-structured, live datasets.&lt;/p>
+&lt;p>With the DLT-Qdrant integration, you can now select Qdrant as a DLT destination to load data into.&lt;/p>
+&lt;p>&lt;strong>DLT Enables&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Automated maintenance - with schema inference, alerts and short declarative code, maintenance becomes simple.&lt;/li>
+&lt;li>Run it where Python runs - on Airflow, serverless functions, notebooks. Scales on micro and large infrastructure alike.&lt;/li>
+&lt;li>User-friendly, declarative interface that removes knowledge obstacles for beginners while empowering senior professionals.&lt;/li>
+&lt;/ul>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>To get started, install &lt;code>dlt&lt;/code> with the &lt;code>qdrant&lt;/code> extra.&lt;/p></description></item><item><title>Fondant</title><link>https://qdrant.tech/documentation/data-management/fondant/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/fondant/</guid><description>&lt;h1 id="fondant">Fondant&lt;/h1>
+&lt;p>&lt;a href="https://fondant.ai/en/stable/" target="_blank" rel="noopener nofollow">Fondant&lt;/a> is an open-source framework that aims to simplify and speed
+up large-scale data processing by making containerized components reusable across pipelines and
+execution environments. Benefit from built-in features such as autoscaling, data lineage, and
+pipeline caching, and deploy to (managed) platforms such as Vertex AI, Sagemaker, and Kubeflow
+Pipelines.&lt;/p>
+&lt;p>Fondant comes with a library of reusable components that you can leverage to compose your own
+pipeline, including a Qdrant component for writing embeddings to Qdrant.&lt;/p></description></item><item><title>InfinyOn Fluvio</title><link>https://qdrant.tech/documentation/data-management/fluvio/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/fluvio/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/data-management/fluvio/fluvio-logo.png" alt="Fluvio Logo">&lt;/p>
+&lt;p>&lt;a href="https://www.fluvio.io/" target="_blank" rel="noopener nofollow">InfinyOn Fluvio&lt;/a> is an open-source platform written in Rust for high speed, real-time data processing. It is cloud native, designed to work with any infrastructure type, from bare metal hardware to containerized platforms.&lt;/p>
+&lt;h2 id="usage-with-qdrant">Usage with Qdrant&lt;/h2>
+&lt;p>With the &lt;a href="https://github.com/qdrant/qdrant-fluvio" target="_blank" rel="noopener nofollow">Qdrant Fluvio Connector&lt;/a>, you can stream records from Fluvio topics to Qdrant collections, leveraging Fluvio&amp;rsquo;s delivery guarantees and high-throughput.&lt;/p>
+&lt;h3 id="pre-requisites">Pre-requisites&lt;/h3>
+&lt;ul>
+&lt;li>A Fluvio installation. You can refer to the &lt;a href="https://www.fluvio.io/docs/fluvio/quickstart/" target="_blank" rel="noopener nofollow">Fluvio Quickstart&lt;/a> for instructions.&lt;/li>
+&lt;li>Qdrant server to connect to. You can set up a &lt;a href="https://qdrant.tech/documentation/quickstart/">local instance&lt;/a> or a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;h3 id="downloading-the-connector">Downloading the connector&lt;/h3>
+&lt;p>Run the following commands after &lt;a href="https://www.fluvio.io/docs/fluvio/quickstart" target="_blank" rel="noopener nofollow">setting up Fluvio&lt;/a>.&lt;/p></description></item><item><title>MindsDB</title><link>https://qdrant.tech/documentation/data-management/mindsdb/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/mindsdb/</guid><description>&lt;h1 id="mindsdb">MindsDB&lt;/h1>
+&lt;p>&lt;a href="https://mindsdb.com" target="_blank" rel="noopener nofollow">MindsDB&lt;/a> is an AI automation platform for building AI/ML powered features and applications. It works by connecting any source of data with any AI/ML model or framework and automating how real-time data flows between them.&lt;/p>
+&lt;p>With the MindsDB-Qdrant integration, you can now select Qdrant as a database to load into and retrieve from with semantic search and filtering.&lt;/p>
+&lt;p>&lt;strong>MindsDB allows you to easily&lt;/strong>:&lt;/p>
+&lt;ul>
+&lt;li>Connect to any store of data or end-user application.&lt;/li>
+&lt;li>Pass data to an AI model from any store of data or end-user application.&lt;/li>
+&lt;li>Plug the output of an AI model into any store of data or end-user application.&lt;/li>
+&lt;li>Fully automate these workflows to build AI-powered features and applications&lt;/li>
+&lt;/ul>
+&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>To get started with Qdrant and MindsDB, the following syntax can be used.&lt;/p></description></item><item><title>Redpanda Connect</title><link>https://qdrant.tech/documentation/data-management/redpanda/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/redpanda/</guid><description>&lt;p>&lt;img src="https://qdrant.tech/documentation/data-management/redpanda/redpanda-cover.png" alt="Redpanda Cover">&lt;/p>
+&lt;p>&lt;a href="https://www.redpanda.com/connect" target="_blank" rel="noopener nofollow">Redpanda Connect&lt;/a> is a declarative data-agnostic streaming service designed for efficient, stateless processing steps. It offers transaction-based resiliency with back pressure, ensuring at-least-once delivery when connecting to at-least-once sources with sinks, without the need to persist messages during transit.&lt;/p>
+&lt;p>Connect pipelines are configured using a YAML file, which organizes components hierarchically. Each section represents a different component type, such as inputs, processors and outputs, and these can have nested child components and &lt;a href="https://docs.redpanda.com/redpanda-connect/configuration/interpolation/" target="_blank" rel="noopener nofollow">dynamic values&lt;/a>.&lt;/p></description></item><item><title>Unstructured</title><link>https://qdrant.tech/documentation/data-management/unstructured/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/data-management/unstructured/</guid><description>&lt;h1 id="unstructured">Unstructured&lt;/h1>
+&lt;p>&lt;a href="https://unstructured.io/" target="_blank" rel="noopener nofollow">Unstructured&lt;/a> is a library designed to help preprocess, structure unstructured text documents for downstream machine learning tasks.&lt;/p>
+&lt;p>Qdrant can be used as an ingestion destination in Unstructured.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>Install Unstructured with the &lt;code>qdrant&lt;/code> extra.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">pip install &lt;span class="s2">&amp;#34;unstructured[qdrant]&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="usage">Usage&lt;/h2>
+&lt;p>Depending on the use case you can prefer the command line or using it within your application.&lt;/p>
+&lt;h3 id="cli">CLI&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-bash" data-lang="bash">&lt;span class="line">&lt;span class="cl">&lt;span class="nv">EMBEDDING_PROVIDER&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="si">${&lt;/span>&lt;span class="nv">EMBEDDING_PROVIDER&lt;/span>&lt;span class="k">:-&lt;/span>&lt;span class="s2">&amp;#34;langchain-huggingface&amp;#34;&lt;/span>&lt;span class="si">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">unstructured-ingest &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> &lt;span class="nb">local&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --input-path example-docs/book-war-and-peace-1225p.txt &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --output-dir local-output-to-qdrant &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --strategy fast &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --chunk-elements &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --embedding-provider &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="nv">$EMBEDDING_PROVIDER&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --num-processes &lt;span class="m">2&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --verbose &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> qdrant &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --collection-name &lt;span class="s2">&amp;#34;test&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --url &lt;span class="s2">&amp;#34;http://localhost:6333&amp;#34;&lt;/span> &lt;span class="se">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="se">&lt;/span> --batch-size &lt;span class="m">80&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>For a full list of the options the CLI accepts, run &lt;code>unstructured-ingest &amp;lt;upstream connector&amp;gt; qdrant --help&lt;/code>&lt;/p></description></item></channel></rss>

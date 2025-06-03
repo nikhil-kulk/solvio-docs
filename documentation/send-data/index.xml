@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Send Data to Qdrant on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/send-data/</link><description>Recent content in Send Data to Qdrant on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/send-data/index.xml" rel="self" type="application/rss+xml"/><item><title>Qdrant on Databricks</title><link>https://qdrant.tech/documentation/send-data/databricks/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/send-data/databricks/</guid><description>&lt;h1 id="qdrant-on-databricks">Qdrant on Databricks&lt;/h1>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Time: 30 min&lt;/th>
+ &lt;th>Level: Intermediate&lt;/th>
+ &lt;th>&lt;a href="https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/4750876096379825/93425612168199/6949977306828869/latest.html" target="_blank" rel="noopener nofollow">Complete Notebook&lt;/a>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>&lt;a href="https://www.databricks.com/" target="_blank" rel="noopener nofollow">Databricks&lt;/a> is a unified analytics platform for working with big data and AI. It&amp;rsquo;s built around Apache Spark, a powerful open-source distributed computing system well-suited for processing large-scale datasets and performing complex analytics tasks.&lt;/p>
+&lt;p>Apache Spark is designed to scale horizontally, meaning it can handle expensive operations like generating vector embeddings by distributing computation across a cluster of machines. This scalability is crucial when dealing with large datasets.&lt;/p></description></item><item><title>Semantic Querying with Airflow and Astronomer</title><link>https://qdrant.tech/documentation/send-data/qdrant-airflow-astronomer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/send-data/qdrant-airflow-astronomer/</guid><description>&lt;h1 id="semantic-querying-with-airflow-and-astronomer">Semantic Querying with Airflow and Astronomer&lt;/h1>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Time: 45 min&lt;/th>
+ &lt;th>Level: Intermediate&lt;/th>
+ &lt;th>&lt;/th>
+ &lt;th>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>In this tutorial, you will use Qdrant as a &lt;a href="https://airflow.apache.org/docs/apache-airflow-providers-qdrant/stable/index.html" target="_blank" rel="noopener nofollow">provider&lt;/a> in &lt;a href="https://airflow.apache.org/" target="_blank" rel="noopener nofollow">Apache Airflow&lt;/a>, an open-source tool that lets you setup data-engineering workflows.&lt;/p>
+&lt;p>You will write the pipeline as a DAG (Directed Acyclic Graph) in Python. With this, you can leverage the powerful suite of Python&amp;rsquo;s capabilities and libraries to achieve almost anything your data pipeline needs.&lt;/p>
+&lt;p>&lt;a href="https://www.astronomer.io/" target="_blank" rel="noopener nofollow">Astronomer&lt;/a> is a managed platform that simplifies the process of developing and deploying Airflow projects via its easy-to-use CLI and extensive automation capabilities.&lt;/p></description></item><item><title>How to Setup Seamless Data Streaming with Kafka and Qdrant</title><link>https://qdrant.tech/documentation/send-data/data-streaming-kafka-qdrant/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/send-data/data-streaming-kafka-qdrant/</guid><description>&lt;h1 id="setup-data-streaming-with-kafka-via-confluent">Setup Data Streaming with Kafka via Confluent&lt;/h1>
+&lt;p>&lt;strong>Author:&lt;/strong> &lt;a href="https://www.linkedin.com/in/kameshwara-pavan-kumar-mantha-91678b21/" target="_blank" rel="noopener nofollow">M K Pavan Kumar&lt;/a> , research scholar at &lt;a href="https://iiitk.ac.in" target="_blank" rel="noopener nofollow">IIITDM, Kurnool&lt;/a>. Specialist in hallucination mitigation techniques and RAG methodologies.
+• &lt;a href="https://github.com/pavanjava" target="_blank" rel="noopener nofollow">GitHub&lt;/a> • &lt;a href="https://medium.com/@manthapavankumar11" target="_blank" rel="noopener nofollow">Medium&lt;/a>&lt;/p>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>This guide will walk you through the detailed steps of installing and setting up the &lt;a href="https://github.com/qdrant/qdrant-kafka" target="_blank" rel="noopener nofollow">Qdrant Sink Connector&lt;/a>, building the necessary infrastructure, and creating a practical playground application. By the end of this article, you will have a deep understanding of how to leverage this powerful integration to streamline your data workflows, ultimately enhancing the performance and capabilities of your data-driven real-time semantic search and RAG applications.&lt;/p></description></item></channel></rss>

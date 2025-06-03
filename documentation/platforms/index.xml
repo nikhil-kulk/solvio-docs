@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Platforms on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/platforms/</link><description>Recent content in Platforms on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/platforms/index.xml" rel="self" type="application/rss+xml"/><item><title>Apify</title><link>https://qdrant.tech/documentation/platforms/apify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/apify/</guid><description>&lt;h1 id="apify">Apify&lt;/h1>
+&lt;p>&lt;a href="https://apify.com/" target="_blank" rel="noopener nofollow">Apify&lt;/a> is a web scraping and browser automation platform featuring an &lt;a href="https://apify.com/store" target="_blank" rel="noopener nofollow">app store&lt;/a> with over 1,500 pre-built micro-apps known as Actors. These serverless cloud programs, which are essentially dockers under the hood, are designed for various web automation applications, including data collection.&lt;/p>
+&lt;p>One such Actor, built especially for AI and RAG applications, is &lt;a href="https://apify.com/apify/website-content-crawler" target="_blank" rel="noopener nofollow">Website Content Crawler&lt;/a>.&lt;/p>
+&lt;p>It&amp;rsquo;s ideal for this purpose because it has built-in HTML processing and data-cleaning functions. That means you can easily remove fluff, duplicates, and other things on a web page that aren&amp;rsquo;t relevant, and provide only the necessary data to the language model.&lt;/p></description></item><item><title>Bubble</title><link>https://qdrant.tech/documentation/platforms/bubble/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/bubble/</guid><description>&lt;h1 id="bubble">Bubble&lt;/h1>
+&lt;p>&lt;a href="https://bubble.io/" target="_blank" rel="noopener nofollow">Bubble&lt;/a> is a software development platform that enables anyone to build and launch fully functional web applications without writing code.&lt;/p>
+&lt;p>You can use the &lt;a href="https://bubble.io/plugin/qdrant-1716804374179x344999530386685950" target="_blank" rel="noopener nofollow">Qdrant Bubble plugin&lt;/a> to interface with Qdrant in your workflows.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>An account at &lt;a href="https://bubble.io/" target="_blank" rel="noopener nofollow">Bubble.io&lt;/a> and an app set up.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up-the-plugin">Setting up the plugin&lt;/h2>
+&lt;p>Navigate to your app&amp;rsquo;s workflows. Select &lt;code>&amp;quot;Install more plugins actions&amp;quot;&lt;/code>.&lt;/p></description></item><item><title>BuildShip</title><link>https://qdrant.tech/documentation/platforms/buildship/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/buildship/</guid><description>&lt;h1 id="buildship">BuildShip&lt;/h1>
+&lt;p>&lt;a href="https://buildship.com/" target="_blank" rel="noopener nofollow">BuildShip&lt;/a> is a low-code visual builder to create APIs, scheduled jobs, and backend workflows with AI assitance.&lt;/p>
+&lt;p>You can use the &lt;a href="https://buildship.com/integrations/qdrant" target="_blank" rel="noopener nofollow">Qdrant integration&lt;/a> to development workflows with semantic-search capabilites.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://buildship.app/" target="_blank" rel="noopener nofollow">BuildsShip&lt;/a> for developing workflows.&lt;/li>
+&lt;/ol>
+&lt;h2 id="nodes">Nodes&lt;/h2>
+&lt;p>Nodes are are fundamental building blocks of BuildShip. Each responsible for an operation in your workflow.&lt;/p>
+&lt;p>The Qdrant integration includes the following nodes with extensibility if required.&lt;/p></description></item><item><title>DocsGPT</title><link>https://qdrant.tech/documentation/platforms/docsgpt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/docsgpt/</guid><description>&lt;h1 id="docsgpt">DocsGPT&lt;/h1>
+&lt;p>&lt;a href="https://docsgpt.arc53.com/" target="_blank" rel="noopener nofollow">DocsGPT&lt;/a> is an open-source documentation assistant that enables you to build conversational user experiences on top of your data.&lt;/p>
+&lt;p>Qdrant is supported as a vectorstore in DocsGPT to ingest and semantically retrieve documents.&lt;/p>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;p>Learn how to setup DocsGPT in their &lt;a href="https://docs.docsgpt.cloud/quickstart" target="_blank" rel="noopener nofollow">Quickstart guide&lt;/a>.&lt;/p>
+&lt;p>You can configure DocsGPT with environment variables in a &lt;code>.env&lt;/code> file.&lt;/p>
+&lt;p>To configure DocsGPT to use Qdrant as the vector store, set &lt;code>VECTOR_STORE&lt;/code> to &lt;code>&amp;quot;qdrant&amp;quot;&lt;/code>.&lt;/p></description></item><item><title>Ironclad Rivet</title><link>https://qdrant.tech/documentation/platforms/rivet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/rivet/</guid><description>&lt;h1 id="ironclad-rivet">Ironclad Rivet&lt;/h1>
+&lt;p>&lt;a href="https://rivet.ironcladapp.com/" target="_blank" rel="noopener nofollow">Rivet&lt;/a> is an Integrated Development Environment (IDE) and library designed for creating AI agents using a visual, graph-based interface.&lt;/p>
+&lt;p>Qdrant is available as a &lt;a href="https://github.com/qdrant/rivet-plugin-qdrant" target="_blank" rel="noopener nofollow">plugin&lt;/a> for building vector-search powered workflows in Rivet.&lt;/p>
+&lt;h2 id="installation">Installation&lt;/h2>
+&lt;ul>
+&lt;li>Open the plugins overlay at the top of the screen.&lt;/li>
+&lt;li>Search for the official Qdrant plugin.&lt;/li>
+&lt;li>Click the &amp;ldquo;Add&amp;rdquo; button to install it in your current project.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/rivet/installation.png" alt="Rivet plugin installation">&lt;/p>
+&lt;h2 id="setting-up-the-connection">Setting up the connection&lt;/h2>
+&lt;p>You can configure your Qdrant instance credentials in the Rivet settings after installing the plugin.&lt;/p></description></item><item><title>Keboola</title><link>https://qdrant.tech/documentation/platforms/keboola/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/keboola/</guid><description>&lt;h1 id="keboola">Keboola&lt;/h1>
+&lt;p>&lt;a href="https://www.keboola.com/" target="_blank" rel="noopener nofollow">Keboola&lt;/a> is a data operations platform that integrates data engineering, analytics, and machine learning tools into a single environment. It helps businesses unify their data sources, transform data, and deploy ML models to production.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://www.keboola.com/" target="_blank" rel="noopener nofollow">Keboola&lt;/a> account to develop your data workflows.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up">Setting Up&lt;/h2>
+&lt;ul>
+&lt;li>In your Keboola platform, navigate to the Components section.&lt;/li>
+&lt;li>Find and add the Qdrant component from the component marketplace.&lt;/li>
+&lt;li>Configure the connection to your Qdrant instance using your URL and API key.&lt;/li>
+&lt;/ul>
+&lt;h2 id="using-qdrant-in-keboola">Using Qdrant in Keboola&lt;/h2>
+&lt;p>With Keboola&amp;rsquo;s Qdrant integration, you can:&lt;/p></description></item><item><title>Kotaemon</title><link>https://qdrant.tech/documentation/platforms/kotaemon/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/kotaemon/</guid><description>&lt;h1 id="kotaemon">Kotaemon&lt;/h1>
+&lt;p>&lt;a href="https://github.com/Cinnamon/kotaemon" target="_blank" rel="noopener nofollow">Kotaemon&lt;/a> is open-source clean &amp;amp; customizable RAG UI for chatting with your documents. Built with both end users and developers in mind.&lt;/p>
+&lt;p>Qdrant is supported as a vectorstore in Kotaemon for ingesting and retrieving documents.&lt;/p>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>Refer to &lt;a href="https://cinnamon.github.io/kotaemon/" target="_blank" rel="noopener nofollow">Getting started&lt;/a> guide to set up Kotaemon.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>To configure Kotaemon to use Qdrant as the vector store, update the &lt;code>flowsettings.py&lt;/code> as follows.&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-python" data-lang="python">&lt;span class="line">&lt;span class="cl">&lt;span class="n">KH_VECTORSTORE&lt;/span> &lt;span class="o">=&lt;/span> &lt;span class="p">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;__type__&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;kotaemon.storages.QdrantVectorStore&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;url&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;https://xyz-example.eu-central.aws.cloud.qdrant.io:6333&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;api_key&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="s2">&amp;#34;&amp;lt;provide-your-own-key&amp;gt;&amp;#39;&amp;#34;&lt;/span>&lt;span class="p">,&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="s2">&amp;#34;client_kwargs&amp;#34;&lt;/span>&lt;span class="p">:&lt;/span> &lt;span class="p">{}&lt;/span> &lt;span class="c1"># Additional options to pass to qdrant_client.QdrantClient&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>Restart Kotaemon for the changes to take effect.&lt;/li>
+&lt;/ul>
+&lt;p>The reference for all the Qdrant client options can be found &lt;a href="https://python-client.qdrant.tech/qdrant_client.qdrant_client" target="_blank" rel="noopener nofollow">here&lt;/a>&lt;/p></description></item><item><title>Make.com</title><link>https://qdrant.tech/documentation/platforms/make/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/make/</guid><description>&lt;h1 id="makecom">Make.com&lt;/h1>
+&lt;p>&lt;a href="https://www.make.com/" target="_blank" rel="noopener nofollow">Make&lt;/a> is a platform for anyone to design, build, and automate anything—from tasks and workflows to apps and systems without code.&lt;/p>
+&lt;p>Find the comprehensive list of available Make apps &lt;a href="https://www.make.com/en/integrations" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/p>
+&lt;p>Qdrant is available as an &lt;a href="https://www.make.com/en/integrations/qdrant" target="_blank" rel="noopener nofollow">app&lt;/a> within Make to add to your scenarios.&lt;/p>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/make/hero-page.png" alt="Qdrant Make hero">&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;p>Before you start, make sure you have the following:&lt;/p>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get free cloud instance &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>An account at Make.com. You can register yourself &lt;a href="https://www.make.com/en/register" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up-a-connection">Setting up a connection&lt;/h2>
+&lt;p>Navigate to your scenario on the Make dashboard and select a Qdrant app module to start a connection.
+&lt;img src="https://qdrant.tech/documentation/frameworks/make/connection.png" alt="Qdrant Make connection">&lt;/p></description></item><item><title>N8N</title><link>https://qdrant.tech/documentation/platforms/n8n/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/n8n/</guid><description>&lt;h1 id="n8n">N8N&lt;/h1>
+&lt;p>&lt;a href="https://n8n.io/" target="_blank" rel="noopener nofollow">N8N&lt;/a> is an automation platform that allows you to build flexible workflows focused on deep data integration.&lt;/p>
+&lt;p>Qdrant is available as a vectorstore node in N8N for building AI-powered functionality within your workflows.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A running N8N instance. You can learn more about using the N8N cloud or self-hosting &lt;a href="https://docs.n8n.io/choose-n8n/" target="_blank" rel="noopener nofollow">here&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up-the-vectorstore">Setting up the vectorstore&lt;/h2>
+&lt;p>Select the Qdrant vectorstore from the list of nodes in your workflow editor.&lt;/p></description></item><item><title>Pipedream</title><link>https://qdrant.tech/documentation/platforms/pipedream/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/pipedream/</guid><description>&lt;h1 id="pipedream">Pipedream&lt;/h1>
+&lt;p>&lt;a href="https://pipedream.com/" target="_blank" rel="noopener nofollow">Pipedream&lt;/a> is a development platform that allows developers to connect many different applications, data sources, and APIs in order to build automated cross-platform workflows. It also offers code-level control with Node.js, Python, Go, or Bash if required.&lt;/p>
+&lt;p>You can use the &lt;a href="https://pipedream.com/apps/qdrant" target="_blank" rel="noopener nofollow">Qdrant app&lt;/a> in Pipedream to add vector search capabilities to your workflows.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://pipedream.com/" target="_blank" rel="noopener nofollow">Pipedream project&lt;/a> to develop your workflows.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up">Setting Up&lt;/h2>
+&lt;p>Search for the Qdrant app in your workflow apps.&lt;/p></description></item><item><title>Portable.io</title><link>https://qdrant.tech/documentation/platforms/portable/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/portable/</guid><description>&lt;h1 id="portable">Portable&lt;/h1>
+&lt;p>&lt;a href="https://portable.io/" target="_blank" rel="noopener nofollow">Portable&lt;/a> is an ELT platform that builds connectors on-demand for data teams. It enables connecting applications to your data warehouse with no code.&lt;/p>
+&lt;p>You can avail the &lt;a href="https://portable.io/connectors/qdrant" target="_blank" rel="noopener nofollow">Qdrant connector&lt;/a> to build data pipelines from your collections.&lt;/p>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/frameworks/portable/home.png" alt="Qdrant Connector">&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://app.portable.io/" target="_blank" rel="noopener nofollow">Portable account&lt;/a>.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up-the-connector">Setting up the connector&lt;/h2>
+&lt;p>Navigate to the Portable dashboard. Search for &lt;code>&amp;quot;Qdrant&amp;quot;&lt;/code> in the sources section.&lt;/p></description></item><item><title>Power Apps</title><link>https://qdrant.tech/documentation/platforms/powerapps/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/powerapps/</guid><description>&lt;h1 id="power-apps">Power Apps&lt;/h1>
+&lt;p>Microsoft &lt;a href="https://www.microsoft.com/en-us/power-platform/products/power-apps" target="_blank" rel="noopener nofollow">Power Apps&lt;/a> is a suite of apps, services, and connectors that provides a rapid development environment to build custom apps for your business needs. You can quickly build custom business apps that connect to your data stored in many online and on-premises data sources.&lt;/p>
+&lt;p>You can use the &lt;a href="https://learn.microsoft.com/en-us/connectors/qdrant/" target="_blank" rel="noopener nofollow">Qdrant Connector&lt;/a> in Power Apps to add vector search capabilities to your flows.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://www.microsoft.com/en-in/power-platform/products/power-apps/" target="_blank" rel="noopener nofollow">Power Apps account&lt;/a> to develop your flows.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up">Setting Up&lt;/h2>
+&lt;p>Search for the Qdrant connector when adding a new action in a Power Apps flow. The connector offers an exhaustive list of pre-built Qdrant actions.&lt;/p></description></item><item><title>PrivateGPT</title><link>https://qdrant.tech/documentation/platforms/privategpt/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/privategpt/</guid><description>&lt;h1 id="privategpt">PrivateGPT&lt;/h1>
+&lt;p>&lt;a href="https://docs.privategpt.dev/" target="_blank" rel="noopener nofollow">PrivateGPT&lt;/a> is a production-ready AI project that allows you to inquire about your documents using Large Language Models (LLMs) with offline support.&lt;/p>
+&lt;p>PrivateGPT uses Qdrant as the default vectorstore for ingesting and retrieving documents.&lt;/p>
+&lt;h2 id="configuration">Configuration&lt;/h2>
+&lt;p>Qdrant settings can be configured by setting values to the qdrant property in the &lt;code>settings.yaml&lt;/code> file. By default, Qdrant tries to connect to an instance at http://localhost:3000.&lt;/p>
+&lt;p>Example:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" class="chroma">&lt;code class="language-yaml" data-lang="yaml">&lt;span class="line">&lt;span class="cl">&lt;span class="nt">qdrant&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">url&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;https://xyz-example.eu-central.aws.cloud.qdrant.io:6333&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="w"> &lt;/span>&lt;span class="nt">api_key&lt;/span>&lt;span class="p">:&lt;/span>&lt;span class="w"> &lt;/span>&lt;span class="s2">&amp;#34;&amp;lt;your-api-key&amp;gt;&amp;#34;&lt;/span>&lt;span class="w">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The available &lt;a href="https://docs.privategpt.dev/manual/storage/vector-stores#qdrant-configuration" target="_blank" rel="noopener nofollow">configuration options&lt;/a> are:&lt;/p></description></item><item><title>Salesforce Mulesoft</title><link>https://qdrant.tech/documentation/platforms/mulesoft/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/mulesoft/</guid><description>&lt;h1 id="salesforce-mulesoft">Salesforce Mulesoft&lt;/h1>
+&lt;p>&lt;a href="https://www.salesforce.com/in/mulesoft/anypoint-platform/" target="_blank" rel="noopener nofollow">MuleSoft Anypoint&lt;/a> is an integration platform to connect applications, data, and devices across on-premises and cloud environments. It provides a unified platform to build, manage, and secure APIs and integrations, making digital transformation smoother and more scalable.&lt;/p>
+&lt;p>&lt;a href="https://mac-project.ai" target="_blank" rel="noopener nofollow">MAC Project&lt;/a> is an open-source initiative to bring AI capabilities into the MuleSoft ecosystem. It provides connectors to add AI capabilities to an Anypoint project by integrating LLMs, vector databases including Qdrant.&lt;/p></description></item><item><title>ToolJet</title><link>https://qdrant.tech/documentation/platforms/tooljet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/tooljet/</guid><description>&lt;h1 id="tooljet">ToolJet&lt;/h1>
+&lt;p>&lt;a href="https://www.tooljet.com" target="_blank" rel="noopener nofollow">ToolJet&lt;/a> is a low-code platform for building business applications. Connect to databases, cloud storages, GraphQL, API endpoints, Airtable, Google sheets, OpenAI, etc and build apps using drag and drop application builder.&lt;/p>
+&lt;h2 id="prerequisites">Prerequisites&lt;/h2>
+&lt;ol>
+&lt;li>A Qdrant instance to connect to. You can get a free cloud instance at &lt;a href="https://cloud.qdrant.io/" target="_blank" rel="noopener nofollow">cloud.qdrant.io&lt;/a>.&lt;/li>
+&lt;li>A &lt;a href="https://www.tooljet.com" target="_blank" rel="noopener nofollow">ToolJet instance&lt;/a> to develop your workflows.&lt;/li>
+&lt;/ol>
+&lt;h2 id="setting-up">Setting Up&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>Search for the Qdrant plugin in the Tooljet &lt;a href="https://docs.tooljet.com/docs/marketplace/plugins/marketplace-plugin-qdrant" target="_blank" rel="noopener nofollow">plugins marketplace&lt;/a>.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Set up the connection to Qdrant using your instance credentials.&lt;/p></description></item><item><title>Vectorize.io</title><link>https://qdrant.tech/documentation/platforms/vectorize/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/platforms/vectorize/</guid><description>&lt;h1 id="vectorizeio">Vectorize.io&lt;/h1>
+&lt;p>&lt;a href="https://vectorize.io/" target="_blank" rel="noopener nofollow">Vectorize&lt;/a> is a SaaS platform that automates data extraction from &lt;a href="https://docs.vectorize.io/integrations/source-connectors" target="_blank" rel="noopener nofollow">several sources&lt;/a> and lets you quickly deploy real-time RAG pipelines for your unstructured data. It also includes evaluation to help figure out the best strategies for the RAG system.&lt;/p>
+&lt;p>Vectorize pipelines natively integrate with Qdrant by converting unstructured data into vector embeddings and storing them in a collection. When a pipeline is running, any new change in the source data is immediately processed, keeping the vector index up-to-date.&lt;/p></description></item></channel></rss>

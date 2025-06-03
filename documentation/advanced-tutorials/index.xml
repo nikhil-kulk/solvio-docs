@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Advanced Retrieval on Qdrant - Vector Database</title><link>https://qdrant.tech/documentation/advanced-tutorials/</link><description>Recent content in Advanced Retrieval on Qdrant - Vector Database</description><generator>Hugo</generator><language>en-us</language><managingEditor>info@qdrant.tech (Andrey Vasnetsov)</managingEditor><webMaster>info@qdrant.tech (Andrey Vasnetsov)</webMaster><atom:link href="https://qdrant.tech/documentation/advanced-tutorials/index.xml" rel="self" type="application/rss+xml"/><item><title>Reranking in Hybrid Search</title><link>https://qdrant.tech/documentation/advanced-tutorials/reranking-hybrid-search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/advanced-tutorials/reranking-hybrid-search/</guid><description>&lt;h1 id="reranking-hybrid-search-results-with-qdrant-vector-database">Reranking Hybrid Search Results with Qdrant Vector Database&lt;/h1>
+&lt;p>Hybrid search combines dense and sparse retrieval to deliver precise and comprehensive results. By adding reranking with ColBERT, you can further refine search outputs for maximum relevance.&lt;/p>
+&lt;p>In this guide, we’ll show you how to implement hybrid search with reranking in Qdrant, leveraging dense, sparse, and late interaction embeddings to create an efficient, high-accuracy search system. Let’s get started!&lt;/p>
+&lt;h2 id="overview">Overview&lt;/h2>
+&lt;p>Let’s start by breaking down the architecture:&lt;/p></description></item><item><title>Search Through Your Codebase</title><link>https://qdrant.tech/documentation/advanced-tutorials/code-search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/advanced-tutorials/code-search/</guid><description>&lt;h1 id="navigate-your-codebase-with-semantic-search-and-qdrant">Navigate Your Codebase with Semantic Search and Qdrant&lt;/h1>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Time: 45 min&lt;/th>
+ &lt;th>Level: Intermediate&lt;/th>
+ &lt;th>&lt;a href="https://colab.research.google.com/github/qdrant/examples/blob/master/code-search/code-search.ipynb" target="_blank" rel="noopener nofollow">&lt;img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">&lt;/a>&lt;/th>
+ &lt;th>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>You too can enrich your applications with Qdrant semantic search. In this
+tutorial, we describe how you can use Qdrant to navigate a codebase, to help
+you find relevant code snippets. As an example, we will use the &lt;a href="https://github.com/qdrant/qdrant" target="_blank" rel="noopener nofollow">Qdrant&lt;/a>
+source code itself, which is mostly written in Rust.&lt;/p>
+&lt;aside role="status">This tutorial might not work on code bases that are not disciplined or structured. For good code search, you may need to refactor the project first.&lt;/aside>
+&lt;h2 id="the-approach">The approach&lt;/h2>
+&lt;p>We want to search codebases using natural semantic queries, and searching for code based on similar logic. You can set up these tasks with embeddings:&lt;/p></description></item><item><title>Build a Recommendation System with Collaborative Filtering</title><link>https://qdrant.tech/documentation/advanced-tutorials/collaborative-filtering/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/advanced-tutorials/collaborative-filtering/</guid><description>&lt;h1 id="use-collaborative-filtering-to-build-a-movie-recommendation-system-with-qdrant">Use Collaborative Filtering to Build a Movie Recommendation System with Qdrant&lt;/h1>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Time: 45 min&lt;/th>
+ &lt;th>Level: Intermediate&lt;/th>
+ &lt;th>&lt;a href="https://githubtocolab.com/qdrant/examples/blob/master/collaborative-filtering/collaborative-filtering.ipynb" target="_blank" rel="noopener nofollow">&lt;img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">&lt;/a>&lt;/th>
+ &lt;th>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>Every time Spotify recommends the next song from a band you&amp;rsquo;ve never heard of, it uses a recommendation algorithm based on other users&amp;rsquo; interactions with that song. This type of algorithm is known as &lt;strong>collaborative filtering&lt;/strong>.&lt;/p>
+&lt;p>Unlike content-based recommendations, collaborative filtering excels when the objects&amp;rsquo; semantics are loosely or unrelated to users&amp;rsquo; preferences. This adaptability is what makes it so fascinating. Movie, music, or book recommendations are good examples of such use cases. After all, we rarely choose which book to read purely based on the plot twists.&lt;/p></description></item><item><title>Scaling PDF Retrieval with Qdrant</title><link>https://qdrant.tech/documentation/advanced-tutorials/pdf-retrieval-at-scale/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>info@qdrant.tech (Andrey Vasnetsov)</author><guid>https://qdrant.tech/documentation/advanced-tutorials/pdf-retrieval-at-scale/</guid><description>&lt;h1 id="scaling-pdf-retrieval-with-qdrant">Scaling PDF Retrieval with Qdrant&lt;/h1>
+&lt;p>&lt;img src="https://qdrant.tech/documentation/tutorials/pdf-retrieval-at-scale/image1.png" alt="scaling-pdf-retrieval-qdrant">&lt;/p>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Time: 30 min&lt;/th>
+ &lt;th>Level: Intermediate&lt;/th>
+ &lt;th>Output: &lt;a href="https://github.com/qdrant/examples/blob/master/pdf-retrieval-at-scale/ColPali_ColQwen2_Tutorial.ipynb" target="_blank" rel="noopener nofollow">GitHub&lt;/a>&lt;/th>
+ &lt;th>&lt;a href="https://githubtocolab.com/qdrant/examples/blob/master/pdf-retrieval-at-scale/ColPali_ColQwen2_Tutorial.ipynb" target="_blank" rel="noopener nofollow">&lt;img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab">&lt;/a>&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;/tbody>
+&lt;/table>
+&lt;p>Efficient PDF documents retrieval is a common requirement in tasks like &lt;strong>(agentic) retrieval-augmented generation (RAG)&lt;/strong> and many other search-based applications. At the same time, setting up PDF documents retrieval is rarely possible without additional challenges.&lt;/p>
+&lt;p>Many traditional PDF retrieval solutions rely on &lt;strong>optical character recognition (OCR)&lt;/strong> together with use case-specific heuristics to handle visually complex elements like tables, images and charts. These algorithms are often non-transferable &amp;ndash; even within the same domain &amp;ndash; with their task-customized parsing and chunking strategies, labor-intensive, prone to errors, and difficult to scale.&lt;/p></description></item></channel></rss>

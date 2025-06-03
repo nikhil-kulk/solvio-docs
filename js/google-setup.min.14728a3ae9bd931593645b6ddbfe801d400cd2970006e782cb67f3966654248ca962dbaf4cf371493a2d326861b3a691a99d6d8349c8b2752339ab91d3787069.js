@@ -1,0 +1,1 @@
+(()=>{var e="G-NZYW2651NE";function t(e,t,n){const s=new Date;s.setTime(s.getTime()+n*24*60*60*1e3);const o="expires="+s.toUTCString();document.cookie=e+"="+t+";"+o+";path=/;Secure"}e&&t("ga_measurement_id",e,365)})()
