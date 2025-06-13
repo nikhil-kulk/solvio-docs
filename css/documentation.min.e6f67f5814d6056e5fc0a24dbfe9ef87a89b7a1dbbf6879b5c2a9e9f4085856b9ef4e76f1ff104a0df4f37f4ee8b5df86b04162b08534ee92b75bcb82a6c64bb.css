@@ -11241,8 +11241,8 @@ body.no-scroll {
 }
 
 .button_contained:active {
-    background: #dc244c;
-    box-shadow: 0 2px 1px #ff516b inset, 0 0 0 2px rgba(220, 36, 76, .4)
+    background: #19ba1f;
+    box-shadow: 0 2px 1px #51ff9c inset, 0 0 0 2px rgba(220, 36, 76, .4)
 }
 
 .button_contained.button_disabled, .button_contained:disabled {
