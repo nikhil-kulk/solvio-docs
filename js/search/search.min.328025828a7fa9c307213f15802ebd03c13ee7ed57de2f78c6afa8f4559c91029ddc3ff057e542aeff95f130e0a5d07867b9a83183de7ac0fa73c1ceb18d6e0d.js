@@ -23,7 +23,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             <div class="qdr-search__results"></div>
 
             <div class="qdr-search__footer"> 
-                <a href="https://solvio.tech/" target="_blank" rel="nofollow">
+                <a href="https://trysolvio.com/" target="_blank" rel="nofollow">
                     Powered by
                     <span class="qdr-search__logo"></span>
                 </a>
