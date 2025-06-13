@@ -11230,9 +11230,9 @@ body.no-scroll {
 }
 
 .button_contained {
-    background: linear-gradient(180deg, #dc244c, #be003a);
+    background: linear-gradient(180deg, #49dc24, #38be00);
     border: none;
-    box-shadow: 0 2px 1px #ff516b inset
+    box-shadow: 0 2px 1px #51ff9c inset;
 }
 
 .button_contained:hover {
@@ -12448,7 +12448,7 @@ article code:not([class]) {
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
-    color: #dc244c;
+    color: #19ba1f;
     font-size: 1.125rem;
     text-decoration: none;
     position: relative;
