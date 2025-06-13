@@ -12269,7 +12269,7 @@ article code:not([class]) {
 }
 
 .menu-link:hover, .menu-link.active {
-    color: #dc244c
+    color: #19ba1f
 }
 
 .main-menu {
@@ -12482,7 +12482,7 @@ article code:not([class]) {
     mask: url(../icons/outline/angle-right-color.svg) no-repeat center right;
     -webkit-mask-size: contain;
     mask-size: contain;
-    background: #dc244c;
+    background: #19ba1f;
     position: absolute;
     right: 0;
     margin-bottom: -2px
@@ -13487,7 +13487,7 @@ form.hs-form .legal-consent-container .hs-form-booleancheckbox-display input[typ
 }
 
 .docs-menu__links-submenu-item.active a {
-    color: #dc244c
+    color: #19ba1f
 }
 
 .docs-menu__articles-link.active {
